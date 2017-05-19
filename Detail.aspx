@@ -38,7 +38,7 @@
 
         <!-- 评论控件 -->
         <div>
-            <div class="bs-example">
+            <div class="bs-example bs-example-form">
                 <div class=" form-inline">
                     <div class="input-group">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
@@ -50,9 +50,9 @@
                     </div>
                 </div>
 
-                <textarea class="form-control span6" rows="4" placeholder="输入你的评论，评论审核成功后显示。" style="margin-top: 10px; margin-bottom: 10px;"></textarea>
+                <textarea class="form-control span6" rows="4" placeholder="输入你的评论，评论审核成功后显示。" style="margin-bottom: 10px;"></textarea>
                 <div style="text-align: right;">
-                    <button type="submit" class="btn btn-default">发布评论</button>
+                    <button type="submit" class="btn">发布评论</button>
                 </div>
             </div>
             <!-- 评论本体 -->
