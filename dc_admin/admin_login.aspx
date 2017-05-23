@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="dc_admin_login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="admin_login.aspx.cs" Inherits="dc_admin_login" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="../css/docs.min.css" rel="stylesheet" />
+    <link href="../css/docs.css" rel="stylesheet" />
     <title>登陆</title>
 </head>
 <body>
@@ -31,6 +31,7 @@
 
     <div class="container" style="max-width:400px;">
         <div class="bs-example bs-example-form">
+            <center><h4><b>登录</b></h4></center>
 
                     <div class="input-group">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
