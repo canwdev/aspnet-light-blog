@@ -8,7 +8,7 @@
                 <h3 class="panel-title">关于 DigitalCreek 轻型博客</h3>
             </div>
             <div class="panel-body">
-                <p>一个轻型开源博客，基于以下技术构建：ASP.NET、Bootstrap、jQuery</p>
+                <p>一个轻型博客，基于以下技术构建：ASP.NET、Bootstrap</p>
                 <p>By canw</p>
                 <img src="res/dc_logo.png" class="img-thumbnail" style="height: 80%; width: 80%;" /><br />
             </div>
