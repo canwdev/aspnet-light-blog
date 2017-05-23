@@ -7,7 +7,7 @@ using System.Web;
 ///Js 的摘要说明
 ///这个库用来快速调用JavaScript代码
 /// </summary>
-public class CallJS
+public class Js
 {
     /// <summary>
     /// 弹出JavaScript对话框
