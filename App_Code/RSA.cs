@@ -43,7 +43,7 @@ public class RSA : PrivateKey
     /// 判断cookie是否匹配（是否成功登录）
     /// </summary>
     /// <param name="name">cookie中用户名</param>
-    /// <param name="pswd">cookie中加密的密码</param>
+    /// <param name="pswd">cookie中加密的密码(已经加密)</param>
     /// <returns></returns>
     public static Boolean CheckIfLogin(String name, String pswd)
     {
