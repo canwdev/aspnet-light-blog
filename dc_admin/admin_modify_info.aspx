@@ -44,11 +44,12 @@
 
         <div style="text-align: right;">
             <div style="float:left;">
-                <asp:Label ID="Label1" runat="server" ForeColor="Green" Visible="False"></asp:Label>
-                <asp:Label ID="Label2" runat="server" ForeColor="Red" Visible="False"></asp:Label>
+                <asp:Label ID="lbl_modpwd_ok" runat="server" ForeColor="Green" Visible="False"></asp:Label>
+                <asp:Label ID="lbl_modpwd_error" runat="server" ForeColor="Red" Visible="False"></asp:Label>
             </div>
-            <asp:Button ID="btn_modify" runat="server" class="btn" Text="修改"
-                OnClick="btn_modify_Click" />
+            
+            <asp:Button ID="btn_modpwd" runat="server" class="btn" Text="修改"
+                OnClick="btn_modpwd_Click" />
             
 
         </div>
