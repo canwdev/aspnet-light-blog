@@ -36,7 +36,7 @@
                     <div class="input-group">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
                         <asp:TextBox ID="txt_username" runat="server" placeholder="用户名" 
-                            class="form-control" ControlToValidate="txt_username"></asp:TextBox>
+                            class="form-control" ControlToValidate="txt_username" autofocus="autofocus"></asp:TextBox>
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
