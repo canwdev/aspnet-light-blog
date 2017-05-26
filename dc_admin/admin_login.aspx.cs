@@ -15,7 +15,7 @@ public partial class dc_admin_login : System.Web.UI.Page
         //若已登录，直接跳转
         try
         {
-            if (Request.Cookies["UserName"] != null && Request.Cookies["LoginKey"] != null)
+            if (Request.Cookies["UserName"] != null && Request.Cookies["UserPassword"] != null)
             {
                 String name = Request.Cookies["UserName"].Value.ToString();
                 String pswd = Request.Cookies["UserPassword"].Value.ToString();
@@ -36,7 +36,7 @@ public partial class dc_admin_login : System.Web.UI.Page
         String username = txt_username.Text;
         String password = txt_password.Text;
         String encPassword = RSA.Encrypt(password);
-        Js.Alert(encPassword);
+        
         try
         {
             var results = from r in db.dc_user
@@ -49,6 +49,7 @@ public partial class dc_admin_login : System.Web.UI.Page
                 Response.Cookies["UserName"].Value = username;
                 
                 Response.Cookies["UserPassword"].Value = encPassword; // 加密存储为密码
+                
                 Response.Redirect("../dc_admin");
 
             }
