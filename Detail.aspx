@@ -6,38 +6,30 @@
 
         <!-- 正文内容 -->
         <article>
-            <h2 class="media-heading"><a href="#">Media heading</a></h2>
-            <h3 class="text-right"><small>Right aligned text.</small></h3>
+            <h2 class="media-heading"><a href="#">
+                <asp:Label ID="lbl_title" runat="server" Text="标题"></asp:Label></a></h2>
+            <div class="text-right"><small>
+                <span class="glyphicon glyphicon-time" aria-hidden="true"></span><asp:Label ID="lbl_time_update" runat="server" Text="更新时间"></asp:Label>
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span><asp:Label ID="lbl_author" runat="server" Text="作者"></asp:Label>
+            </small></div>
             <hr />
-            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-            <p>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-            </p>
-            <img src="res/dc_logo.png" class="img-thumbnail" style="height: 50%; width: 50%;" />
-            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-            <p>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
-            </p>
+            <div class="main_article">
+                <asp:Label ID="lbl_article_context" runat="server" Text="正文内容"></asp:Label>
+            </div>
+            
 
         </article>
-        <!-- 正文的分页栏 -->
+
+        <!-- 正文的分页栏 
         <nav aria-label="...">
             <ul class="pager">
                 <li class="previous disabled"><a href="#">Previous</a></li>
                 <li class="next"><a href="#">Next</a></li>
             </ul>
-        </nav>
-
-        <!-- 评论控件 -->
+        </nav>-->
+        <hr />
         <div>
+        <!-- 评论控件 
             <div class="bs-example bs-example-form">
                 <div class=" form-inline">
                     <div class="input-group">
@@ -55,12 +47,12 @@
                     <button type="submit" class="btn">发布评论</button>
                 </div>
             </div>
-            <!-- 评论本体 -->
+            <!-- 评论本体 
             <div class="bs-callout bs-callout">
                 <h4 class="media-heading">测试评论<small class="text-right"><a href="mailto:name@email.com">name@email.com</a></small></h4>
                 Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
             </div>
-            <!-- 评论分页 -->
+            <!-- 评论分页 
             <nav aria-label="Page navigation" class="invisible">
                 <ul class="pager">
                     <li>
@@ -77,11 +69,11 @@
                         </a>
                     </li>
                 </ul>
-            </nav>
-
+            </nav>-->
+            
         </div>
-
-    </div>
+   </div>
+  
     <!-- 导航 -->
     <div class="col-md-3 hidden-xs">
         <nav class="bs-docs-sidebar">
