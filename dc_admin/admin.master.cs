@@ -12,7 +12,7 @@ public partial class dc_admin_admin : System.Web.UI.MasterPage
     {
         try
         {
-            if (Request.Cookies["UserName"] != null && Request.Cookies["LoginKey"] != null)
+            if (Request.Cookies["UserName"] != null && Request.Cookies["UserPassword"] != null)
             {
                 String name = Request.Cookies["UserName"].Value.ToString();
                 String pswd = Request.Cookies["UserPassword"].Value.ToString();
@@ -29,7 +29,7 @@ public partial class dc_admin_admin : System.Web.UI.MasterPage
         }
         catch (Exception exc)
         {
-            Js.Alert(exc.Message.ToString());
+            //Js.Alert(exc.Message.ToString());
             Response.Redirect("../");
         }
         
