@@ -26,7 +26,7 @@
                             </div>
                             <div class="media-right">
                                 <a href="Detail.aspx?id=<%# Eval("id") %>">
-                                    <img src="res/nyan.gif" height="64px" width="64px"/>
+                                    <img src="res/nyan.gif" height="64px" width="64px" />
                                 </a>
                             </div>
                         </div>
@@ -56,14 +56,14 @@
             <asp:LinqDataSource ID="LinqHomePageArticle" runat="server" ContextTypeName="DataClassesDataContext" EntityTypeName="" TableName="dc_article" OrderBy="id desc">
             </asp:LinqDataSource>
 
-            
+
 
         </div>
         <!-- 导航 -->
         <div class="col-md-3">
             <div class="bs-callout bs-callout-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">轻型博客</h3>
+                    <h3 class="panel-title">标签</h3>
                 </div>
                 <ul class="nav bs-docs-sidenav">
                     <li class=""><a href="#overview-doctype">HTML5 文档类型</a></li>

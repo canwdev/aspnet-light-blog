@@ -18,7 +18,7 @@
     <div class="col-md-3">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">轻型博客</h3>
+                <h3 class="panel-title">标签</h3>
             </div>
             <ul class="nav bs-docs-sidenav">
                 <li class=""><a href="#overview-doctype">HTML5 文档类型</a></li>
