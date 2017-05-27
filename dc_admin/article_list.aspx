@@ -15,7 +15,7 @@
                 <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("article_intro") %>'></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
-                <div style="margin:10px; max-height: 500px; overflow-y:scroll;">
+                <div style="margin:10px; max-height: 300px; overflow-y:scroll;">
                 <asp:Label ID="Label2" runat="server" Text='<%# Bind("article_intro") %>'></asp:Label>
                     </div>
             </ItemTemplate>
@@ -25,13 +25,18 @@
                 <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("article_context") %>'></asp:TextBox>
             </EditItemTemplate>
             <ItemTemplate>
-                <div style="margin:10px; max-height: 500px; overflow-y:scroll;">
+                <div style="margin:10px; max-height: 300px; overflow-y:scroll;">
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("article_context") %>'></asp:Label>
                 </div>
                 
             </ItemTemplate>
         </asp:TemplateField>
-        <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+        <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="article_addmod.aspx?id={0}" HeaderText="编辑" Text="编辑" />
+        <asp:TemplateField ShowHeader="False">
+            <ItemTemplate>
+                <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="删除" OnClientClick="javascript:return confirm('确定要删除吗？');"></asp:LinkButton>
+            </ItemTemplate>
+        </asp:TemplateField>
     </Columns>
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
