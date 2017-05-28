@@ -5,8 +5,8 @@
         <center><h4><b><asp:Label ID="lbl_head_title" runat="server" Text="文章"></asp:Label></b></h4></center>
         <div class=" form-inline">
             <div class="input-group">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
-                <asp:TextBox ID="txt_title" runat="server" class="form-control" placeholder="文章标题" autocomplete="on"></asp:TextBox>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></span>
+                <asp:TextBox ID="txt_title" runat="server" class="form-control" placeholder="文章标题" autofocus="autofocus"></asp:TextBox>
                 
 
             </div>
@@ -18,8 +18,8 @@
             </div>
 
             <div class="input-group">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
-                <asp:DropDownList ID="DropDownList1" runat="server" class="form-control" ></asp:DropDownList>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-tags" aria-hidden="true"></span></span>
+                <asp:DropDownList ID="ddl_article_tag" runat="server" class="form-control" ></asp:DropDownList>
             </div>
         </div>
         <div class="form-group">
@@ -39,7 +39,10 @@
                 <asp:Label ID="lbl_modpwd_error" runat="server" ForeColor="Red" Visible="False"></asp:Label>
             </div>
 
-            <asp:Button ID="btn_submit" runat="server" class="btn" Text="提交" OnClick="btn_submit_Click" />
+
+            <asp:Button ID="btn_cancel" runat="server" class="btn btn-default" Text="返回" OnClick="btn_cancel_Click" Visible="False" />
+            <asp:Button ID="btn_delete" runat="server" class="btn btn-danger" Text="删除" OnClientClick="javascript:return confirm('确定要删除吗？这将无法撤销。');" OnClick="btn_delete_Click"/>
+            <asp:Button ID="btn_submit" runat="server" class="btn btn-primary" Text="提交" OnClick="btn_submit_Click" />
 
 
         </div>

@@ -6,10 +6,12 @@
 
         <!-- 正文内容 -->
         <article>
-            <h2 class="media-heading"><a href="#">
-                <asp:Label ID="lbl_title" runat="server" Text="标题"></asp:Label></a></h2>
+            <h2 class="media-heading">
+                <asp:Label ID="lbl_title" runat="server" Text="标题"></asp:Label></h2>
             <div class="text-right"><small>
-                <span class="glyphicon glyphicon-time" aria-hidden="true"></span><asp:Label ID="lbl_time_update" runat="server" Text="更新时间"></asp:Label>
+                <asp:Label ID="lbl_edit" runat="server" Text="编辑" Visible="False"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-tag" aria-hidden="true"></span><asp:Label ID="lbl_tag" runat="server" Text="标签无效"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-time" aria-hidden="true"></span><asp:Label ID="lbl_time_update" runat="server" Text="更新时间"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span><asp:Label ID="lbl_author" runat="server" Text="作者"></asp:Label>
             </small></div>
             <hr />
@@ -74,17 +76,29 @@
         </div>
    </div>
   
-    <!-- 导航 -->
-    <div class="col-md-3 hidden-xs">
-        <nav class="bs-docs-sidebar">
-            <ul class="nav bs-docs-sidenav">
-                <li class=""><a href="#overview-doctype">HTML5 文档类型</a></li>
-                <li class=""><a href="#overview-mobile">移动设备优先</a></li>
-                <li class=""><a href="#overview-type-links">排版与链接</a></li>
-                <li class=""><a href="#overview-normalize">Normalize.css</a></li>
-                <li class=""><a href="#overview-container">布局容器</a></li>
-            </ul>
-        </nav>
-    </div>
+    <!-- 标签导航 -->
+        <div class="col-md-3">
+            <asp:ListView ID="ListView2" runat="server"></asp:ListView>
+            <div class="bs-callout bs-callout-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">标签</h3>
+                </div>
+                <ul class="nav bs-docs-sidenav">
+                    
+                    <asp:ListView ID="ListView3" runat="server" DataKeyNames="id" DataSourceID="LinqArticleTags">
+                        <ItemTemplate>
+                            <li class=""><a href="Detail.aspx?tagid=<%# Eval("id") %>">
+                                <asp:Label ID="article_tag_nameLabel" runat="server" Text='<%# Eval("article_tag_name") %>' /></a>
+                            </li>
+                        </ItemTemplate>
+
+                    </asp:ListView>
+
+                    <asp:LinqDataSource ID="LinqArticleTags" runat="server" ContextTypeName="DataClassesDataContext" EntityTypeName="" TableName="dc_article_tag">
+                    </asp:LinqDataSource>
+
+                </ul>
+            </div>
+        </div>
 </asp:Content>
 

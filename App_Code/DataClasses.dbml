@@ -17,6 +17,14 @@
       <Column Name="author" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="article_intro" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="article_context" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="article_tag_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.dc_article_tag" Member="dc_article_tag">
+    <Type Name="dc_article_tag">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="article_tag_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="article_tag_intro" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
     </Type>
   </Table>
 </Database>
