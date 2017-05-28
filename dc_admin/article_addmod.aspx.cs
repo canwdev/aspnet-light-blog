@@ -14,10 +14,13 @@ public partial class dc_admin_article_addmod : System.Web.UI.Page
     {
         if (!this.IsPostBack)
         {
+            Bind_ddlTag();
             if (Request.QueryString["id"] != null)
             {
                 lbl_head_title.Text = "编辑文章";
                 btn_submit.Text = "修改";
+
+                btn_cancel.Visible = true;
                 Page.Header.Title = "编辑文章";
 
                 int id = int.Parse(Request.QueryString["id"]);
@@ -36,17 +39,40 @@ public partial class dc_admin_article_addmod : System.Web.UI.Page
 
     public void ArticleLoad(int id)
     {
-        var result = (from r in db.dc_article
-                      where r.id == id
-                      select r).First();
-        if (result != null)
+        try
         {
-            txt_title.Text = result.title;
-            txt_author.Text = result.author;
-            txt_intro.Text = result.article_intro;
-            txt_context.Text = result.article_context;
+            var result = (from r in db.dc_article
+                          where r.id == id
+                          select r).First();
+            if (result != null)
+            {
+                txt_title.Text = result.title;
+                txt_author.Text = result.author;
+                txt_intro.Text = result.article_intro;
+                txt_context.Text = result.article_context;
+
+                //匹配tag下拉数据源
+                String tagid = (result.article_tag_id).ToString();
+                var data = (from r in db.dc_article_tag
+                            where id == int.Parse(tagid)
+                            select r).First();
+                if (tagid != "" && data != null)
+                {
+                    ddl_article_tag.Items.FindByValue(tagid).Selected = true;
+                }
+                else
+                {
+                    ddl_article_tag.Items.FindByValue("1").Selected = true;
+                }
+
+            }
+        }
+        catch
+        {
+
         }
         
+
     }
 
     public void ArticleMod(int id)
@@ -60,16 +86,10 @@ public partial class dc_admin_article_addmod : System.Web.UI.Page
             if (result != null)
             {
                 result.title = txt_title.Text;
-                if (result.time_commit != null)
-                {
-                    result.time_update = DateTime.Now;
-                }
-                else
-                {
-                    result.time_commit = DateTime.Now;
-                }
+                result.time_update = DateTime.Now;
                 result.author = txt_author.Text;
-                result.article_intro = txt_intro.Text + "...<a href=\"Detail.aspx?id=" + id + "\">查看更多</a>";
+                result.article_tag_id = int.Parse(ddl_article_tag.SelectedValue);
+                result.article_intro = txt_intro.Text;
                 //result.article_intro = (txt_context.Text).Substring(0, 200);
                 result.article_context = txt_context.Text;
                 db.SubmitChanges();
@@ -87,22 +107,41 @@ public partial class dc_admin_article_addmod : System.Web.UI.Page
             lbl_modpwd_error.Text = ex.Message;
             lbl_modpwd_error.Visible = true;
         }
-        
+
     }
 
     public void ArticleAdd()
     {
         dc_article article = new dc_article();
         article.title = txt_title.Text;
-        article.time_commit = DateTime.Now;
+        DateTime time = DateTime.Now;
+        article.time_commit = time;
+        article.time_update = time;
         article.author = txt_author.Text;
+        article.article_tag_id = int.Parse(ddl_article_tag.SelectedValue);
         article.article_intro = txt_intro.Text + "...";
         article.article_context = txt_context.Text;
 
         db.dc_article.InsertOnSubmit(article);
         db.SubmitChanges();
+
+        txt_title.Text = "";
+        txt_intro.Text = "";
+        txt_context.Text = "";
+
         lbl_modpwd_ok.Text = "添加成功，回到<a href=\"../Default.aspx\">首页</a>";
         lbl_modpwd_ok.Visible = true;
+
+    }
+
+    //绑定tag下拉数据源
+    protected void Bind_ddlTag()
+    {
+        var tag = from r in db.dc_article_tag select r;
+        ddl_article_tag.DataSource = tag;
+        ddl_article_tag.DataTextField = "article_tag_name";
+        ddl_article_tag.DataValueField = "id";
+        ddl_article_tag.DataBind();
     }
 
     protected void btn_submit_Click(object sender, EventArgs e)
@@ -115,5 +154,23 @@ public partial class dc_admin_article_addmod : System.Web.UI.Page
         {
             ArticleAdd();
         }
+    }
+
+    protected void btn_cancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("article_list.aspx");
+    }
+
+    protected void btn_delete_Click(object sender, EventArgs e)
+    {
+        int id = int.Parse(Request.QueryString["id"]);
+        var result = (from r in db.dc_article
+                      where r.id == id
+                      select r).First();
+
+        db.dc_article.DeleteOnSubmit(result);
+        db.SubmitChanges();
+        Js.Alert("已删除");
+        Response.Redirect("Default.aspx");
     }
 }

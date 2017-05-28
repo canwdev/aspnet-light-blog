@@ -9,9 +9,6 @@ public partial class dc_admin_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        /* string a = RSA.Encrypt("abc");
-        Js.Alert(a);
-        a = RSA.Decrypt(a);
-        Js.Alert(a); */
+        Response.Redirect("article_list.aspx");
     }
 }

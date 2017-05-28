@@ -22,7 +22,7 @@
                                     <a href="Detail.aspx?id=<%# Eval("id") %>">
                                         <asp:Label ID="titleLabel" runat="server" Text='<%# Eval("title") %>' /></a>
                                 </h4>
-                                <asp:Label ID="article_introLabel" runat="server" Text='<%# Eval("article_intro") %>' />
+                                <asp:Label ID="article_introLabel" runat="server" Text='<%# Eval("article_intro") %>' /><a href="Detail.aspx?id=<%# Eval("id") %>">...查看更多</a>
                             </div>
                             <div class="media-right">
                                 <a href="Detail.aspx?id=<%# Eval("id") %>">
@@ -59,21 +59,32 @@
 
 
         </div>
-        <!-- 导航 -->
+        <!-- 标签导航 -->
         <div class="col-md-3">
+            <asp:ListView ID="ListView2" runat="server"></asp:ListView>
             <div class="bs-callout bs-callout-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">标签</h3>
                 </div>
                 <ul class="nav bs-docs-sidenav">
-                    <li class=""><a href="#overview-doctype">HTML5 文档类型</a></li>
-                    <li class=""><a href="#overview-mobile">移动设备优先</a></li>
-                    <li class=""><a href="#overview-type-links">排版与链接</a></li>
-                    <li class=""><a href="#overview-normalize">Normalize.css</a></li>
-                    <li class=""><a href="#overview-container">布局容器</a></li>
+                    
+                    <asp:ListView ID="ListView3" runat="server" DataKeyNames="id" DataSourceID="LinqArticleTags">
+                        <ItemTemplate>
+                            <li class=""><a href="Detail.aspx?tagid=<%# Eval("id") %>">
+                                <asp:Label ID="article_tag_nameLabel" runat="server" Text='<%# Eval("article_tag_name") %>' /></a>
+                            </li>
+                        </ItemTemplate>
+
+                    </asp:ListView>
+
+                    <asp:LinqDataSource ID="LinqArticleTags" runat="server" ContextTypeName="DataClassesDataContext" EntityTypeName="" TableName="dc_article_tag">
+                    </asp:LinqDataSource>
+
                 </ul>
             </div>
         </div>
+
+
     </div>
 </asp:Content>
 
