@@ -13,6 +13,7 @@
     <link href="css/dc_index.css" rel="stylesheet" />
 
     <title>DigitalCreek Light Blog</title>
+    <script src="js/jquery-3.1.1.min.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -29,7 +30,7 @@
                             <span class="icon-bar"></span>
                         </button>
 
-                        <a class="navbar-brand" href="./"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>DigitalCreek</a>
+                        <a class="navbar-brand" href="./"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>MyBlog</a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -41,14 +42,14 @@
 
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a href="dc_admin/admin_login.aspx" class="dropdown-toggle" data-toggle="dropdown" 
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
                                     role="button" aria-haspopup="true" aria-expanded="false">
                                     <asp:Label ID="lbl_username" runat="server" Text="管理"></asp:Label>&nbsp;<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="dc_admin/admin_login.aspx">
+                                    <li><a href="dc_admin/admin_login.aspx"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;
                                         <asp:Label ID="lbl_mgr" runat="server" Text="登录"></asp:Label></a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#">分享</a></li>
+                                    <li><a href="#"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>分享</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -66,7 +67,7 @@
 
         </div>
     </form>
-    <script src="js/jquery-3.1.1.min.js"></script>
+    
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/expand_dropdown_auto.js"></script>
 </body>

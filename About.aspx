@@ -10,7 +10,7 @@
             <div class="panel-body">
                 <p>一个轻型博客，基于以下技术构建：ASP.NET、Bootstrap</p>
                 <p>By canw</p>
-                <img src="res/nyan.gif" class="img-thumbnail" style="height: 50%; width: 50%;" /><br />
+                <img src="res/doge.gif" class="img-thumbnail" style="height: 50%; width: 50%;" /><br />
             </div>
         </div>
     </div>

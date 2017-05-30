@@ -2,7 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="bs-example bs-example-form">
-        <center><h4><b><asp:Label ID="lbl_head_title" runat="server" Text="文章"></asp:Label></b></h4></center>
+        <legend><asp:Label ID="lbl_head_title" runat="server" Text="文章"></asp:Label></legend>
+
         <div class=" form-inline">
             <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></span>

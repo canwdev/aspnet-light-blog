@@ -4,8 +4,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="jumbotron hidden-xs">
-        <h1>山紫水明</h1>
-        <p>さんしすいめい scenic beauty. This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <h1>Jumbotron</h1>
+        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
         <p><a class="btn btn-primary btn-lg" href="Detail.aspx?id=4" role="button">详细信息</a></p>
     </div>
     <div class="row">
@@ -26,7 +26,7 @@
                             </div>
                             <div class="media-right">
                                 <a href="Detail.aspx?id=<%# Eval("id") %>">
-                                    <img src="res/nyan.gif" height="64px" width="64px" />
+                                    <img src="res/doge.gif" height="64px" width="64px" />
                                 </a>
                             </div>
                         </div>
