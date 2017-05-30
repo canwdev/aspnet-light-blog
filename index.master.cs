@@ -33,7 +33,7 @@ public partial class index : System.Web.UI.MasterPage
         }
         catch (Exception exc)
         {
-            //Js.Alert(exc.Message.ToString());
+            Console.WriteLine(exc.Message.ToString());
         }
     }
 }

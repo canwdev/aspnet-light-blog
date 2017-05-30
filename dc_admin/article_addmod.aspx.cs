@@ -30,6 +30,7 @@ public partial class dc_admin_article_addmod : System.Web.UI.Page
             {
                 lbl_head_title.Text = "写文章";
                 btn_submit.Text = "提交";
+                btn_delete.Visible = false;
                 Page.Header.Title = "写文章";
 
                 txt_author.Text = Request.Cookies["UserName"].Value.ToString();

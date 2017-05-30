@@ -23,7 +23,7 @@ public partial class dc_admin_article_addmod : System.Web.UI.Page
                 Page.Header.Title = "编辑标签";
 
                 int id = int.Parse(Request.QueryString["id"]);
-                Load(id);
+                LoadToWebPage(id);
             }
             else
             {
@@ -34,7 +34,7 @@ public partial class dc_admin_article_addmod : System.Web.UI.Page
         }
     }
 
-    public void Load(int id)
+    public void LoadToWebPage(int id)
     {
         var result = (from r in db.dc_article_tag
                       where r.id == id

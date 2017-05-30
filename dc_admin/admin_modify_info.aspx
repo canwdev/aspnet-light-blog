@@ -2,8 +2,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-    <div class="col-md-3 bs-example bs-example-form">
-        <center><h4><b>修改密码</b></h4></center>
+    <div class="col-md-3 well bs-component">
+        
+        <legend>修改密码</legend>
 
         <div class="form-group">
             <label>原始密码</label>

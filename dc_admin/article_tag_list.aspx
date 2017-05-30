@@ -6,8 +6,8 @@
          class="table table-striped table-bordered " GridLines="None">
         <Columns>
             <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
-            <asp:BoundField DataField="article_tag_name" HeaderText="article_tag_name" SortExpression="article_tag_name" />
-            <asp:BoundField DataField="article_tag_intro" HeaderText="article_tag_intro" SortExpression="article_tag_intro" />
+            <asp:BoundField DataField="article_tag_name" HeaderText="标签名称" SortExpression="article_tag_name" />
+            <asp:BoundField DataField="article_tag_intro" HeaderText="简介" SortExpression="article_tag_intro" />
             <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="article_tag_addmod.aspx?id={0}" HeaderText="&lt;span class=&quot;glyphicon glyphicon-pencil&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;" Text="编辑" />
             <asp:TemplateField HeaderText="&lt;span class=&quot;glyphicon glyphicon-trash&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;" ShowHeader="False">
                 <ItemTemplate>
