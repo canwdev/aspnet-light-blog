@@ -38,15 +38,9 @@ digital_creek			根目录
 │      PrivateKey.cs	用户密码加密私钥
 │      RSA.cs			RSA加密算法与用户验证
 │
-├─bootstrap				使用了开源的bootstrap前端框架
+├─bootstrap				开源的bootstrap前端框架
 │
 ├─css
-│      animate.css		使用了开源的animate.css
-│      dc_index.css
-│      debug.css
-│      docs.css			使用了bootstrap官方文档中的docs.css
-│      docs.min.css
-│      hover.css		使用了开源的animate.css
 │
 ├─database_backup		备份
 │      dc_Database.bak	SQL Server 2008 R2 数据库备份
