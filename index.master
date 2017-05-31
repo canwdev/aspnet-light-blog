@@ -72,8 +72,8 @@
 
 
             <!-- 分享模态框 -->
-            <div id="ShareModal" class="modal bs-example-modal-sm animated flip" tabindex="-1" 
-                role="dialog" aria-labelledby="mySmallModalLabel" style="margin-top:200px;">
+            <div id="ShareModal" class="modal fade bs-example-modal-sm" tabindex="-1" 
+                role="dialog" aria-labelledby="mySmallModalLabel" style="margin-top:100px;">
                 <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content">
 
@@ -85,6 +85,15 @@
                            <p>一个轻型博客，基于ASP.NET+Bootstrap</p>
                            <p>By canw</p>
                            <p><a href="https://github.com/canwdev/digital_creek">https://github.com/canwdev/digital_creek</a></p>
+                            <p>感谢以下开源项目：</p>
+                            <ul>
+                                <li><a href="http://v3.bootcss.com/">Bootstrap</a></li>
+                                <li><a href="http://bootswatch.com/cerulean/">Bootstrap Cerulean Theme</a></li>
+                                <li><a href="https://github.com/daneden/animate.css">animate.css</a></li>
+                                <li><a href="https://github.com/IanLunn/Hover">hover.css</a></li>
+                                <li><a href="https://jquery.com/">jQuery</a></li>
+                                <li><a href="https://github.com/wangfupeng1988/wangEditor">wangEditor</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>

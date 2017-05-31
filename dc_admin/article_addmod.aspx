@@ -29,10 +29,15 @@
         </div>
         <div class="form-group">
             <label>内容</label>
-            <asp:TextBox ID="txt_context" runat="server" class="form-control" placeholder="内容" Height="300px" TextMode="MultiLine"></asp:TextBox>
+            <asp:TextBox ID="txt_context" runat="server" class="form-control" placeholder="内容" Height="500px" TextMode="MultiLine"></asp:TextBox>
             <div style="text-align: right;">
             </div>
         </div>
+        <script src="../wangEditor/js/wangEditor.min.js"></script>
+        <script type="text/javascript">
+            var editor = new wangEditor('ContentPlaceHolder1_txt_context');
+            editor.create();
+        </script>
 
         <div style="text-align: right;">
             <div style="float: left;">
