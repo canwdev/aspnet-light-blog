@@ -70,11 +70,9 @@ digital_creek			根目录
 ~~~
 
 ## 感谢以下开源项目
-~~~
-- [Bootstrap](http://v3.bootcss.com/)
-- [Bootstrap Cerulean Theme](http://bootswatch.com/cerulean/)
-- [animate.css](https://github.com/daneden/animate.css)
-- [hover.css](https://github.com/IanLunn/Hover)
-- [jQuery](https://jquery.com/)
-- [wangEditor](https://github.com/wangfupeng1988/wangEditor)
-~~~
+* [Bootstrap](http://v3.bootcss.com/)
+* [Bootstrap Cerulean Theme](http://bootswatch.com/cerulean/)
+* [animate.css](https://github.com/daneden/animate.css)
+* [hover.css](https://github.com/IanLunn/Hover)
+* [jQuery](https://jquery.com/)
+* [wangEditor](https://github.com/wangfupeng1988/wangEditor)
