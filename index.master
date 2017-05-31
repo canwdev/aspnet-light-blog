@@ -9,6 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/docs.css" rel="stylesheet" />
+    <link href="css/animate.css" rel="stylesheet" />
+    <link href="css/hover.css" rel="stylesheet" />
     <!-- 自定义css -->
     <link href="css/dc_index.css" rel="stylesheet" />
 
@@ -19,6 +21,8 @@
     <form id="form1" runat="server">
         <div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
             <nav class="navbar navbar-default navbar-static-top">
+
+                <!-- 导航栏容器 -->
                 <div class="container">
 
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -37,7 +41,7 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li><a href="./">首页</a></li>
-                            <li><a href="About.aspx">关于</a></li>
+                            
                         </ul>
 
                         <ul class="nav navbar-nav navbar-right">
@@ -49,21 +53,43 @@
                                     <li><a href="dc_admin/admin_login.aspx"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;
                                         <asp:Label ID="lbl_mgr" runat="server" Text="登录"></asp:Label></a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>分享</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#ShareModal">
+                                        <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>&nbsp;分享</a></li>
                                 </ul>
                             </li>
                         </ul>
 
                     </div>
-                    <!-- /.navbar-collapse -->
+                    
 
                 </div>
             </nav>
-            <!-- 容器 -->
+            <!-- 页面内容容器 -->
             <div class="container">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
+
+
+            <!-- 分享模态框 -->
+            <div id="ShareModal" class="modal bs-example-modal-sm animated flip" tabindex="-1" 
+                role="dialog" aria-labelledby="mySmallModalLabel" style="margin-top:200px;">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h4 class="modal-title" id="mySmallModalLabel">分享</h4>
+                        </div>
+                        <div class="modal-body">
+                           <p>一个轻型博客，基于ASP.NET+Bootstrap</p>
+                           <p>By canw</p>
+                           <p><a href="https://github.com/canwdev/digital_creek">https://github.com/canwdev/digital_creek</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </form>

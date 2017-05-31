@@ -3,10 +3,10 @@
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <div class="jumbotron hidden-xs">
+    <div class="jumbotron hidden-xs animated fadeIn">
         <h1>Jumbotron</h1>
         <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <p><a class="btn btn-primary btn-lg" href="Detail.aspx?id=4" role="button">详细信息</a></p>
+        <p><a class="btn btn-primary btn-lg hvr-buzz" href="Detail.aspx?id=4" role="button">详细信息</a></p>
     </div>
     <div class="row">
         <div class="col-md-9">
@@ -26,7 +26,7 @@
                             </div>
                             <div class="media-right">
                                 <a href="Detail.aspx?id=<%# Eval("id") %>">
-                                    <img src="res/doge.gif" height="64px" width="64px" />
+                                    <img src="res/test.png" height="64px" width="64px" />
                                 </a>
                             </div>
                         </div>

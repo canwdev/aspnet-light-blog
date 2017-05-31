@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/docs.css" rel="stylesheet" />
-
-    
+    <link href="../css/animate.css" rel="stylesheet" />
+    <link href="../css/hover.css" rel="stylesheet" />
     <title>控制中心</title>
 </head>
 <body>
@@ -87,7 +87,7 @@
                 </div>
             </nav>
             <!-- 容器 -->
-            <div class="container">
+            <div class="container animated fadeIn">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
 

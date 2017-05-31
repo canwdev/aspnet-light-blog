@@ -7,7 +7,7 @@
         <div class=" form-inline">
             <div class="input-group">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></span>
-                <asp:TextBox ID="txt_title" runat="server" class="form-control" placeholder="文章标题" autofocus="autofocus"></asp:TextBox>
+                <asp:TextBox ID="txt_title" runat="server" class="form-control" placeholder="文章标题" required="yes" autofocus="autofocus"></asp:TextBox>
                 
 
             </div>

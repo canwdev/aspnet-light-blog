@@ -9,6 +9,6 @@ public partial class dc_admin_Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.Redirect("article_list.aspx");
+        //Response.Redirect("article_list.aspx");
     }
 }

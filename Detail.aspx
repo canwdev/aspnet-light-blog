@@ -15,7 +15,7 @@
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span><asp:Label ID="lbl_author" runat="server" Text="作者"></asp:Label>
             </small></div>
             <hr />
-            <div class="main_article">
+            <div class="main_article animated fadeIn">
                 <asp:Label ID="lbl_article_context" runat="server" Text="正文内容"></asp:Label>
             </div>
             
