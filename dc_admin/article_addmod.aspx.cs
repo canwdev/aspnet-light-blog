@@ -40,39 +40,35 @@ public partial class dc_admin_article_addmod : System.Web.UI.Page
 
     public void ArticleLoad(int id)
     {
-        try
+
+        var result = (from r in db.dc_article
+                      where r.id == id
+                      select r).First();
+        if (result != null)
         {
-            var result = (from r in db.dc_article
-                          where r.id == id
-                          select r).First();
-            if (result != null)
+            txt_title.Text = result.title;
+            txt_author.Text = result.author;
+            txt_intro.Text = result.article_intro;
+            txt_context.Text = result.article_context;
+
+            //匹配tag下拉数据源
+            String tagid = (result.article_tag_id).ToString();
+            var data = (from r in db.dc_article_tag
+                        where r.id == int.Parse(tagid)
+                        select r).First();
+
+            if (tagid != "" && data != null)
             {
-                txt_title.Text = result.title;
-                txt_author.Text = result.author;
-                txt_intro.Text = result.article_intro;
-                txt_context.Text = result.article_context;
-
-                //匹配tag下拉数据源
-                String tagid = (result.article_tag_id).ToString();
-                var data = (from r in db.dc_article_tag
-                            where id == int.Parse(tagid)
-                            select r).First();
-                if (tagid != "" && data != null)
-                {
-                    ddl_article_tag.Items.FindByValue(tagid).Selected = true;
-                }
-                else
-                {
-                    ddl_article_tag.Items.FindByValue("1").Selected = true;
-                }
-
+                ddl_article_tag.Items.FindByValue(tagid).Selected = true;
             }
-        }
-        catch
-        {
+            else
+            {
+                ddl_article_tag.Items.FindByValue("1").Selected = true;
+            }
 
         }
-        
+
+
 
     }
 

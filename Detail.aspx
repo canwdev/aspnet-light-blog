@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
-    <div class="col-md-9">
+    <div class="col-md-10">
 
         <!-- 正文内容 -->
         <article>
@@ -77,7 +77,7 @@
    </div>
   
     <!-- 标签导航 -->
-        <div class="col-md-3">
+        <div class="col-md-2">
             <asp:ListView ID="ListView2" runat="server"></asp:ListView>
             <div class="bs-callout bs-callout-default">
                 <div class="panel-heading">

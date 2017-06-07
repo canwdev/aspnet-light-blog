@@ -9,7 +9,7 @@
         <p><a class="btn btn-primary btn-lg hvr-buzz" href="Detail.aspx?id=<%=LoadSettings.LoadValue("hero_link_id")%>" role="button">详细信息</a></p>
     </div>
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-10">
 
             <asp:ListView ID="ListView1" runat="server" DataKeyNames="id" DataSourceID="LinqHomePageArticle">
 
@@ -21,7 +21,7 @@
                                 <h4 class="media-heading">
                                     <a href="Detail.aspx?id=<%# Eval("id") %>">
                                         <asp:Label ID="titleLabel" runat="server" Text='<%# Eval("title") %>' /></a>
-                                    <div style="float:right;"><small><%# Eval("author") %>&nbsp;&nbsp; <%# Eval("time_update") %></small></div>
+                                    <div style="float:right;"><small><%# Eval("time_update") %>&nbsp;&nbsp;<%# Eval("author") %></small></div>
                                 </h4>
                                 
                                 <asp:Label ID="article_introLabel" runat="server" Text='<%# Eval("article_intro") %>' /><a href="Detail.aspx?id=<%# Eval("id") %>">...查看更多</a>
@@ -62,7 +62,7 @@
 
         </div>
         <!-- 标签导航 -->
-        <div class="col-md-3">
+        <div class="col-md-2">
             <asp:ListView ID="ListView2" runat="server"></asp:ListView>
             <div class="bs-callout bs-callout-default">
                 <div class="panel-heading">
