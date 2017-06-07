@@ -11,6 +11,7 @@ public partial class index : System.Web.UI.MasterPage
     {
         try
         {
+            img_headimg.ImageUrl = "./res/head.png";
             //Page.Header.Title = LoadSettings.loadTitle();
             if (Request.Cookies["UserName"] != null && Request.Cookies["UserPassword"] != null)
             {
@@ -21,15 +22,15 @@ public partial class index : System.Web.UI.MasterPage
                 {
                     lbl_username.Text = "" + name;
                     lbl_mgr.Text = "管理";
+                    img_headimg.ImageUrl = LoadSettings.LoadUserHeadImg(1);
                 } else
                 {
-
+                    
                 }
             }
             else
             {
-                Response.Cookies["UserName"].Value = null;
-                Response.Cookies["UserPassword"].Value = null;
+                
             }
         }
         catch (Exception exc)

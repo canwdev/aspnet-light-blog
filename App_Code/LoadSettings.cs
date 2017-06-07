@@ -23,4 +23,13 @@ public class LoadSettings
                       select r).First();
         return result.set_value;
     }
+
+    public static string LoadUserHeadImg(int uid1)
+    {
+        DataClassesDataContext db = new DataClassesDataContext();
+        var result = (from r in db.dc_user
+                      where r.uid == uid1
+                      select r).First();
+        return result.headimg;
+    }
 }

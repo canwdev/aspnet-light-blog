@@ -29,9 +29,6 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 	
   #region 可扩展性方法定义
   partial void OnCreated();
-  partial void Insertdc_user(dc_user instance);
-  partial void Updatedc_user(dc_user instance);
-  partial void Deletedc_user(dc_user instance);
   partial void Insertdc_article(dc_article instance);
   partial void Updatedc_article(dc_article instance);
   partial void Deletedc_article(dc_article instance);
@@ -41,6 +38,9 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
   partial void Insertdc_settings(dc_settings instance);
   partial void Updatedc_settings(dc_settings instance);
   partial void Deletedc_settings(dc_settings instance);
+  partial void Insertdc_user(dc_user instance);
+  partial void Updatedc_user(dc_user instance);
+  partial void Deletedc_user(dc_user instance);
   #endregion
 	
 	public DataClassesDataContext() : 
@@ -73,14 +73,6 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		OnCreated();
 	}
 	
-	public System.Data.Linq.Table<dc_user> dc_user
-	{
-		get
-		{
-			return this.GetTable<dc_user>();
-		}
-	}
-	
 	public System.Data.Linq.Table<dc_article> dc_article
 	{
 		get
@@ -104,138 +96,12 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 			return this.GetTable<dc_settings>();
 		}
 	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.dc_user")]
-public partial class dc_user : INotifyPropertyChanging, INotifyPropertyChanged
-{
 	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _uid;
-	
-	private string _uname;
-	
-	private string _upassword;
-	
-	private System.Nullable<int> _gid;
-	
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnuidChanging(int value);
-    partial void OnuidChanged();
-    partial void OnunameChanging(string value);
-    partial void OnunameChanged();
-    partial void OnupasswordChanging(string value);
-    partial void OnupasswordChanged();
-    partial void OngidChanging(System.Nullable<int> value);
-    partial void OngidChanged();
-    #endregion
-	
-	public dc_user()
-	{
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_uid", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int uid
+	public System.Data.Linq.Table<dc_user> dc_user
 	{
 		get
 		{
-			return this._uid;
-		}
-		set
-		{
-			if ((this._uid != value))
-			{
-				this.OnuidChanging(value);
-				this.SendPropertyChanging();
-				this._uid = value;
-				this.SendPropertyChanged("uid");
-				this.OnuidChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_uname", DbType="NVarChar(50)")]
-	public string uname
-	{
-		get
-		{
-			return this._uname;
-		}
-		set
-		{
-			if ((this._uname != value))
-			{
-				this.OnunameChanging(value);
-				this.SendPropertyChanging();
-				this._uname = value;
-				this.SendPropertyChanged("uname");
-				this.OnunameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_upassword", DbType="NVarChar(50)")]
-	public string upassword
-	{
-		get
-		{
-			return this._upassword;
-		}
-		set
-		{
-			if ((this._upassword != value))
-			{
-				this.OnupasswordChanging(value);
-				this.SendPropertyChanging();
-				this._upassword = value;
-				this.SendPropertyChanged("upassword");
-				this.OnupasswordChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gid", DbType="Int")]
-	public System.Nullable<int> gid
-	{
-		get
-		{
-			return this._gid;
-		}
-		set
-		{
-			if ((this._gid != value))
-			{
-				this.OngidChanging(value);
-				this.SendPropertyChanging();
-				this._gid = value;
-				this.SendPropertyChanged("gid");
-				this.OngidChanged();
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			return this.GetTable<dc_user>();
 		}
 	}
 }
@@ -689,6 +555,188 @@ public partial class dc_settings : INotifyPropertyChanging, INotifyPropertyChang
 				this._set_intro = value;
 				this.SendPropertyChanged("set_intro");
 				this.Onset_introChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.dc_user")]
+public partial class dc_user : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _uid;
+	
+	private string _uname;
+	
+	private string _upassword;
+	
+	private System.Nullable<int> _gid;
+	
+	private string _nickname;
+	
+	private string _headimg;
+	
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnuidChanging(int value);
+    partial void OnuidChanged();
+    partial void OnunameChanging(string value);
+    partial void OnunameChanged();
+    partial void OnupasswordChanging(string value);
+    partial void OnupasswordChanged();
+    partial void OngidChanging(System.Nullable<int> value);
+    partial void OngidChanged();
+    partial void OnnicknameChanging(string value);
+    partial void OnnicknameChanged();
+    partial void OnheadimgChanging(string value);
+    partial void OnheadimgChanged();
+    #endregion
+	
+	public dc_user()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_uid", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int uid
+	{
+		get
+		{
+			return this._uid;
+		}
+		set
+		{
+			if ((this._uid != value))
+			{
+				this.OnuidChanging(value);
+				this.SendPropertyChanging();
+				this._uid = value;
+				this.SendPropertyChanged("uid");
+				this.OnuidChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_uname", DbType="NVarChar(50)")]
+	public string uname
+	{
+		get
+		{
+			return this._uname;
+		}
+		set
+		{
+			if ((this._uname != value))
+			{
+				this.OnunameChanging(value);
+				this.SendPropertyChanging();
+				this._uname = value;
+				this.SendPropertyChanged("uname");
+				this.OnunameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_upassword", DbType="NVarChar(256)")]
+	public string upassword
+	{
+		get
+		{
+			return this._upassword;
+		}
+		set
+		{
+			if ((this._upassword != value))
+			{
+				this.OnupasswordChanging(value);
+				this.SendPropertyChanging();
+				this._upassword = value;
+				this.SendPropertyChanged("upassword");
+				this.OnupasswordChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gid", DbType="Int")]
+	public System.Nullable<int> gid
+	{
+		get
+		{
+			return this._gid;
+		}
+		set
+		{
+			if ((this._gid != value))
+			{
+				this.OngidChanging(value);
+				this.SendPropertyChanging();
+				this._gid = value;
+				this.SendPropertyChanged("gid");
+				this.OngidChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_nickname", DbType="NVarChar(50)")]
+	public string nickname
+	{
+		get
+		{
+			return this._nickname;
+		}
+		set
+		{
+			if ((this._nickname != value))
+			{
+				this.OnnicknameChanging(value);
+				this.SendPropertyChanging();
+				this._nickname = value;
+				this.SendPropertyChanged("nickname");
+				this.OnnicknameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_headimg", DbType="NVarChar(MAX)")]
+	public string headimg
+	{
+		get
+		{
+			return this._headimg;
+		}
+		set
+		{
+			if ((this._headimg != value))
+			{
+				this.OnheadimgChanging(value);
+				this.SendPropertyChanging();
+				this._headimg = value;
+				this.SendPropertyChanged("headimg");
+				this.OnheadimgChanged();
 			}
 		}
 	}
