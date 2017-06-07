@@ -27,4 +27,12 @@
       <Column Name="article_tag_intro" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
     </Type>
   </Table>
+  <Table Name="dbo.dc_settings" Member="dc_settings">
+    <Type Name="dc_settings">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="set_title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="set_value" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="set_intro" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+    </Type>
+  </Table>
 </Database>

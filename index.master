@@ -14,7 +14,7 @@
     <!-- 自定义css -->
     <link href="css/dc_index.css" rel="stylesheet" />
 
-    <title>DigitalCreek Light Blog</title>
+    <title>DigitalCreek</title>
     <script src="js/jquery-3.1.1.min.js"></script>
 </head>
 <body>
@@ -34,7 +34,7 @@
                             <span class="icon-bar"></span>
                         </button>
 
-                        <a class="navbar-brand" href="./"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>MyBlog</a>
+                        <a class="navbar-brand" href="./"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><%=LoadSettings.LoadValue("site_title")%></a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -47,7 +47,8 @@
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-                                    role="button" aria-haspopup="true" aria-expanded="false">
+                                    role="button" aria-haspopup="true" aria-expanded="false"  style="padding: 9px;">
+                                    <img src="../res/head.png" class="img-circle" height="32" width="32"/>
                                     <asp:Label ID="lbl_username" runat="server" Text="管理"></asp:Label>&nbsp;<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="dc_admin/admin_login.aspx"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;
@@ -99,8 +100,18 @@
                 </div>
             </div>
 
-
         </div>
+
+        <footer class="bs-docs-footer">
+            <div class="container">
+                <ul class="bs-docs-footer-links">
+                    <li><a href="https://github.com/canwdev">GitHub仓库</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#ShareModal">关于</a></li>
+                </ul>
+                <p>版权所有 &copy;2017 DigitalCreek by <a href="mailto:example@example.com" target="_blank">canwdev</a></p>
+            </div>
+        </footer>
+
     </form>
     
     <script src="bootstrap/js/bootstrap.min.js"></script>

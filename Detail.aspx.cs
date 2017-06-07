@@ -13,8 +13,13 @@ public partial class Detail : System.Web.UI.Page
     {
         if (!this.IsPostBack)
         {
-            String name = Request.Cookies["UserName"].Value.ToString();
-            String pswd = Request.Cookies["UserPassword"].Value.ToString();
+            String name="null", pswd="null";
+
+            if (Request.Cookies["UserName"] != null)
+            {
+                name = Request.Cookies["UserName"].Value.ToString();
+                pswd = Request.Cookies["UserPassword"].Value.ToString();
+            }
 
             if (Request.QueryString["id"] != null)
             {
@@ -44,7 +49,7 @@ public partial class Detail : System.Web.UI.Page
             }
             else
             {
-                Page.Header.Title = "未找到文章";
+                Page.Header.Title = "未找到文章 - "+ LoadSettings.LoadValue("site_title");
                 lbl_title.Text = "404 Page Not Found";
 
             }
@@ -57,12 +62,12 @@ public partial class Detail : System.Web.UI.Page
     {
         try
         {
-            var results = from r in db.dc_article
+            var result = (from r in db.dc_article
                           where r.id == id
-                          select r;
-            var result = results.First();
+                          select r).First();
+            
 
-            Page.Header.Title = "文章 - " + result.title;
+            Page.Header.Title = result.title + " - " + LoadSettings.LoadValue("site_title");
             lbl_title.Text = "<a href=\"Detail.aspx?id=" + result.id + "\">" + result.title + "</a>";
 
             //加载文章所属标签
@@ -87,9 +92,12 @@ public partial class Detail : System.Web.UI.Page
 
             lbl_article_context.Text = result.article_context;
         }
-        catch
+        catch (Exception exc)
         {
-
+            Page.Header.Title = "未找到文章 - " + LoadSettings.LoadValue("site_title");
+            lbl_title.Text = "404 Page Not Found";
+            //lbl_edit.Visible = false;
+            lbl_article_context.Text = exc.Message.ToString();
         }
     }
 
@@ -99,7 +107,7 @@ public partial class Detail : System.Web.UI.Page
                    where r.id == tagid
                    select r).First();
 
-        Page.Header.Title = "“" + res.article_tag_name + "”的标签";
+        Page.Header.Title = "“" + res.article_tag_name + "”的标签 - " + LoadSettings.LoadValue("site_title");
         lbl_title.Text = "“" + res.article_tag_name + "”的标签";
         lbl_tag.Visible = false;
         lbl_time_update.Text = "";

@@ -4,9 +4,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="jumbotron hidden-xs animated fadeIn">
-        <h1>Jumbotron</h1>
-        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <p><a class="btn btn-primary btn-lg hvr-buzz" href="Detail.aspx?id=4" role="button">详细信息</a></p>
+        <h1><%=LoadSettings.LoadValue("hero_title")%></h1>
+        <p><%=LoadSettings.LoadValue("hero_context")%></p>
+        <p><a class="btn btn-primary btn-lg hvr-buzz" href="Detail.aspx?id=<%=LoadSettings.LoadValue("hero_link_id")%>" role="button">详细信息</a></p>
     </div>
     <div class="row">
         <div class="col-md-9">
@@ -21,7 +21,9 @@
                                 <h4 class="media-heading">
                                     <a href="Detail.aspx?id=<%# Eval("id") %>">
                                         <asp:Label ID="titleLabel" runat="server" Text='<%# Eval("title") %>' /></a>
+                                    <div style="float:right;"><small><%# Eval("author") %>&nbsp;&nbsp; <%# Eval("time_update") %></small></div>
                                 </h4>
+                                
                                 <asp:Label ID="article_introLabel" runat="server" Text='<%# Eval("article_intro") %>' /><a href="Detail.aspx?id=<%# Eval("id") %>">...查看更多</a>
                             </div>
                             <div class="media-right">
@@ -39,7 +41,7 @@
                     <!-- 文章列表分页 -->
                     <center>
 
- <asp:DataPager ID="DataPager1" runat="server" PageSize="5">
+            <asp:DataPager ID="DataPager1" runat="server" PageSize="5">
                 <Fields>
                     <asp:NextPreviousPagerField FirstPageText="&laquo;" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="data_pager" />
                     <asp:NextPreviousPagerField ButtonCssClass="data_pager" PreviousPageText="&lt;" ShowNextPageButton="False" />

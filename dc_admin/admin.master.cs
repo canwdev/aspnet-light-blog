@@ -16,7 +16,7 @@ public partial class dc_admin_admin : System.Web.UI.MasterPage
             {
                 String name = Request.Cookies["UserName"].Value.ToString();
                 String pswd = Request.Cookies["UserPassword"].Value.ToString();
-                lbl_username.Text = "你好，"+name;
+                lbl_username.Text = " "+name;
                 if (!RSA.CheckIfLogin(name, pswd))
                 {
                     Response.Redirect("../");
@@ -29,7 +29,7 @@ public partial class dc_admin_admin : System.Web.UI.MasterPage
         }
         catch (Exception exc)
         {
-            //Js.Alert(exc.Message.ToString());
+            Console.WriteLine(exc.Message.ToString());
             Response.Redirect("../");
         }
         

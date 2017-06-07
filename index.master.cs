@@ -11,6 +11,7 @@ public partial class index : System.Web.UI.MasterPage
     {
         try
         {
+            //Page.Header.Title = LoadSettings.loadTitle();
             if (Request.Cookies["UserName"] != null && Request.Cookies["UserPassword"] != null)
             {
                 String name = Request.Cookies["UserName"].Value.ToString();

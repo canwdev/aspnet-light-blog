@@ -30,7 +30,7 @@
                             <span class="icon-bar"></span>
                         </button>
 
-                        <a class="navbar-brand" href="../Default.aspx"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>MyBlog</a>
+                        <a class="navbar-brand" href="../Default.aspx"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><%=LoadSettings.LoadValue("site_title")%></a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -69,7 +69,9 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+                                    aria-haspopup="true" aria-expanded="false" style="padding: 9px;">
+                                    <img src="../res/head.png" class="img-circle" height="32" width="32"/>
                                     <asp:Label ID="lbl_username" runat="server" Text="USERNAME"></asp:Label>&nbsp;<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     
@@ -77,7 +79,8 @@
                                         <asp:LinkButton ID="LinkButton1" runat="server" OnClick="btn_modifyAdminInfo_Click" CausesValidation="False">资料修改</asp:LinkButton></li>
                                     <li role="separator" class="divider"></li>
                                     <li>
-                                        <asp:LinkButton ID="btn_logoff" runat="server" OnClick="btn_logoff_Click" CausesValidation="False"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;注销</asp:LinkButton></li>
+                                        <asp:LinkButton ID="btn_logoff" runat="server" OnClick="btn_logoff_Click" CausesValidation="False">
+                                            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;注销</asp:LinkButton></li>
                                 </ul>
                             </li>
                         </ul>
@@ -96,8 +99,13 @@
             </div>
 
         </div>
-        
-        
+
+        <footer class="bs-docs-footer">
+            <div class="container">
+                <p>版权所有 &copy;2017 DigitalCreek by <a href="mailto:example@example.com" target="_blank">canwdev</a></p>
+            </div>
+        </footer>
+
         <script src="../bootstrap/js/bootstrap.min.js"></script>
         <script src="../js/expand_dropdown_auto.js"></script>
     </form>
