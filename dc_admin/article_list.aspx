@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
     <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
-        DataKeyNames="id" DataSourceID="LinqArticleList" class="table table-striped table-bordered " GridLines="None">
+        DataKeyNames="id" DataSourceID="LinqArticleList" class="table table-hover" GridLines="None">
         <Columns>
             <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
             <asp:TemplateField HeaderText="标题" SortExpression="title">

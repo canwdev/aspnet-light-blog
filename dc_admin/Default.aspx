@@ -37,10 +37,6 @@
                 </tr>
                 
                 <tr>
-                    <td>服务器语言：</td>
-                    <td>zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4,ja;q=0.2,zh-TW;q=0.2,la;q=0.2,sm;q=0.2</td>
-                </tr>
-                <tr>
                     <td>服务器Web端口：</td>
                     <td><%=Request.ServerVariables["SERVER_PORT"]%></td>
                 </tr>

@@ -24,14 +24,11 @@
             </div>
         </div>
         <div class="form-group">
-            <label>简介</label>
             <asp:TextBox ID="txt_intro" runat="server" class="form-control" placeholder="填写简介，在主页上显示" TextMode="MultiLine"></asp:TextBox>
-        </div>
-        <div class="form-group">
-            <label>内容</label>
-            <asp:TextBox ID="txt_context" runat="server" class="form-control" placeholder="内容" Height="500px" TextMode="MultiLine"></asp:TextBox>
-            <div style="text-align: right;">
+            <div style="margin-top:10px;">
+                <asp:TextBox ID="txt_context" runat="server" class="form-control" placeholder="内容" Height="500px" TextMode="MultiLine"></asp:TextBox>
             </div>
+            
         </div>
         <script src="../wangEditor/js/wangEditor.min.js"></script>
         <script type="text/javascript">
