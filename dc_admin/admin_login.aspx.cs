@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class dc_admin_login : System.Web.UI.Page
+public partial class admin_login : System.Web.UI.Page
 {
     private DataClassesDataContext db = new DataClassesDataContext();
 
@@ -33,39 +33,47 @@ public partial class dc_admin_login : System.Web.UI.Page
     }
     protected void btn_login_Click(object sender, EventArgs e)
     {
-        String username = txt_username.Text;
-        String password = txt_password.Text;
-        String encPassword = RSA.Encrypt(password);
-        
-        try
+        string username = txt_username.Text;
+        string password = txt_password.Text;
+        string encPassword = RSA.Encrypt(password);
+
+        if (Page.IsValid)
         {
-            var results = from r in db.dc_user
-                          where r.uname.ToString() == username
-                          select r;
-            String decDbPassword = RSA.Decrypt(results.First().upassword.ToString());
-            if (results.First() != null && password == decDbPassword)
+
+            /*try{*/
+            var result = (from r in db.dc_user
+                          where r.uname == username
+                          select r).First();
+            if (result != null)
             {
-
-                Response.Cookies["UserName"].Value = username;
+                string decDbPassword = RSA.Decrypt(result.upassword);
                 
-                Response.Cookies["UserPassword"].Value = encPassword; // 加密存储为密码
-                
-                Response.Redirect("../dc_admin");
-
+                if (password == decDbPassword)
+                {
+                    Response.Cookies["UserName"].Value = username;
+                    Response.Cookies["UserPassword"].Value = encPassword; // 加密存储为密码
+                    Response.Redirect("../dc_admin");
+                }
+                else
+                {
+                    lbl_err.Text = "登陆失败：密码错误";
+                }
             }
             else
             {
-                lbl_err.Text = "登陆失败：用户名或密码错误";
+                lbl_err.Text = "登陆失败：用户名不存在";
             }
 
-        }
-        catch (Exception exc)
-        {
-            lbl_err.Text = "登陆失败：" + exc.Message.ToString();
-        }
-        finally
-        {
+            /*}
+             catch (Exception exc)
+            {
+                lbl_err.Text = "登陆失败：" + exc.Message.ToString();
+            }
+            finally
+            {
 
+            }*/
         }
+
     }
 }

@@ -1,15 +1,14 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="admin_login.aspx.cs" Inherits="dc_admin_login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="admin_login.aspx.cs" Inherits="admin_login" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head runat="server">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/docs.css" rel="stylesheet" />
-    <title>登陆</title>
+    <title>登录</title>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -48,12 +47,12 @@
                     </div>
                     
 
+                    <%--<asp:TextBox ID="txt_rsa" runat="server"></asp:TextBox>--%>
                     <asp:Button ID="btn_login" runat="server" Text="登陆" class="btn" 
                         onclick="btn_login_Click"/>
-
                 </div>
             </div>
-    </div
+    </div>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="用户名不能为空" ControlToValidate="txt_username" Display="None"></asp:RequiredFieldValidator>
     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
         ErrorMessage="密码不能为空" ControlToValidate="txt_password" Display="None" 

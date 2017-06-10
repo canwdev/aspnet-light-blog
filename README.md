@@ -1,52 +1,47 @@
 ﻿# Digital Creek Lightweight Blog
 
-## 说明
+## 项目说明
 ~~~
-用ASP.NET实现的一个轻量级博客（实验版）
+这是一个用ASP.NET实现的轻量级博客（实验版）
 VisualStudio 2017 + SQL Server 2008 R2
 ~~~
 
 ## 目前实现的功能
 ~~~
-1. 管理员的登录、密码修改
-2. 文章的发布编辑删除
+1. 管理员登录、密码修改
+2. 文章发布、编辑、删除
 3. 用标签来进行文章分类
 ~~~
 
-## 目录结构
+## 更新日志
 ~~~
-digital_creek			根目录
-│  .gitattributes		
-│  .gitignore			
-│  About.aspx			关于页面
-│  About.aspx.cs
+2017-6-10 20:47:37
+修复严重bug：在IIS下不能登录的问题，修复秘钥登录方法
+~~~
+
+## 部分目录文件结构
+~~~
+digital_creek			根目录		
 │  Default.aspx			首页
 │  Default.aspx.cs
 │  Detail.aspx			文章页
 │  Detail.aspx.cs
 │  index.master			前台模板页
 │  index.master.cs
-│  README.md
-│  Web.config			网站配置
-│  Web.Debug.config
 │
 ├─App_Code
-│      DataClasses.dbml	数据库引用
+│      DataClasses.dbml			数据库引用
 │      DataClasses.dbml.layout
 │      DataClasses.designer.cs
-│      Js.cs			快速调用JavaScript类
-│      PrivateKey.cs	用户密码加密私钥
-│      RSA.cs			RSA加密算法与用户验证
-│
-├─bootstrap				开源的bootstrap前端框架
-│
-├─css
+│      Js.cs					快速调用JavaScript类
+│      Key.cs					存放公钥和私钥
+│      RSA.cs					RSA加解密与用户验证
 │
 ├─database_backup		备份
-│      dc_Database.bak	SQL Server 2008 R2 数据库备份
+│      dc_Database.bak	SQLServer2008R2数据库备份
 │
-├─dc_admin				管理员后台
-│  │  admin.master		管理员后台母版页
+├─dc_admin				管理后台
+│  │  admin.master		后台母版页
 │  │  admin.master.cs
 │  │  admin_login.aspx	管理员登录
 │  │  admin_login.aspx.cs
@@ -62,10 +57,7 @@ digital_creek			根目录
 │  │  article_tag_list.aspx.cs
 │  │  Default.aspx				管理员后台首页
 │  │  Default.aspx.cs
-│  │
-│  └─css
 │
-├─js
 └─res		资源文件
 ~~~
 
