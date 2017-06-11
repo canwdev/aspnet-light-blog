@@ -111,7 +111,7 @@
                     <li><a href="https://github.com/canwdev">GitHub仓库</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#ShareModal">关于</a></li>
                 </ul>
-                <p>版权所有 &copy;2017 DigitalCreek by <a href="mailto:example@example.com" target="_blank">canwdev</a></p>
+                <p>Beta 版权所有 &copy;2017 DigitalCreek by <a href="mailto:example@example.com" target="_blank">canwdev</a></p>
             </div>
         </footer>
 

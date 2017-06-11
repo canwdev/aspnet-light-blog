@@ -33,7 +33,15 @@
         <script src="../wangEditor/js/wangEditor.min.js"></script>
         <script type="text/javascript">
             var editor = new wangEditor('ContentPlaceHolder1_txt_context');
+            editor.config.uploadImgUrl = '../wangEditor/uploadImage.ashx';
+
+            editor.config.uploadHeaders = {
+                'Accept': 'text/x-json'
+            };
+
+            //editor.config.hideLinkImg = true;
             editor.create();
+
         </script>
 
         <div style="text-align: right;">

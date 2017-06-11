@@ -93,7 +93,7 @@ public partial class admin_login : System.Web.UI.Page
                               select r;
                 if (results.Count() > 0)
                 {
-                    lbl_err.Text = "注册失败：用户已存在"+results.ToString();
+                    lbl_err.Text = "注册失败：用户已存在";
                 }
                 else
                 {
