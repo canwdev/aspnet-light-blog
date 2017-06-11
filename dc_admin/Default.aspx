@@ -44,13 +44,24 @@
             </tbody>
         </table>
         <hr />
-        <div class="bs-example bs-example-form" style="max-height: 500px; overflow-y: scroll; word-wrap:break-word; font-family: Consolas;">
-            <legend>其他信息输出</legend>
-                <%
-            foreach (string x in Request.ServerVariables)
-            Response.Write(x +":   "+ Request.ServerVariables[x] +"<br />");
-            %>
-        </div>
+
+            <div class="panel panel-default" style="max-height: 500px; overflow-y: scroll; word-wrap:break-word; font-family: Consolas; background-color:black; color: lawngreen;">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                    <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">显示全部信息
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="panel-body">
+                        <%
+                            foreach (string x in Request.ServerVariables)
+                                Response.Write(x + ":   " + Request.ServerVariables[x] + "<br />");
+                        %>
+                    </div>
+                </div>
+            </div>
+
 
     
 </asp:Content>

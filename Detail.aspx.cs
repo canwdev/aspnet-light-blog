@@ -49,7 +49,7 @@ public partial class Detail : System.Web.UI.Page
             }
             else
             {
-                Page.Header.Title = "未找到文章 - "+ LoadSettings.LoadValue("site_title");
+                Page.Header.Title = "未找到文章 - "+ dc_Settings.LoadValue("site_title");
                 lbl_title.Text = "404 Page Not Found";
 
             }
@@ -67,7 +67,7 @@ public partial class Detail : System.Web.UI.Page
                           select r).First();
             
 
-            Page.Header.Title = result.title + " - " + LoadSettings.LoadValue("site_title");
+            Page.Header.Title = result.title + " - " + dc_Settings.LoadValue("site_title");
             lbl_title.Text = "<a href=\"Detail.aspx?id=" + result.id + "\">" + result.title + "</a>";
 
             //加载文章所属标签
@@ -94,7 +94,7 @@ public partial class Detail : System.Web.UI.Page
         }
         catch (Exception exc)
         {
-            Page.Header.Title = "未找到文章 - " + LoadSettings.LoadValue("site_title");
+            Page.Header.Title = "未找到文章 - " + dc_Settings.LoadValue("site_title");
             lbl_title.Text = "404 Page Not Found";
             //lbl_edit.Visible = false;
             lbl_article_context.Text = exc.Message.ToString();
@@ -107,7 +107,7 @@ public partial class Detail : System.Web.UI.Page
                    where r.id == tagid
                    select r).First();
 
-        Page.Header.Title = "“" + res.article_tag_name + "”的标签 - " + LoadSettings.LoadValue("site_title");
+        Page.Header.Title = "“" + res.article_tag_name + "”的标签 - " + dc_Settings.LoadValue("site_title");
         lbl_title.Text = "“" + res.article_tag_name + "”的标签";
         lbl_tag.Visible = false;
         lbl_time_update.Text = "";

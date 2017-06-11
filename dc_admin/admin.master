@@ -32,7 +32,7 @@
                         </button>
 
                         <a class="navbar-brand" href="../Default.aspx"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                            <%=LoadSettings.LoadValue("site_title")%></a>
+                            <%=dc_Settings.LoadValue("site_title")%></a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -79,7 +79,6 @@
                                     
                                     <li>
                                         <asp:LinkButton ID="LinkButton1" runat="server" OnClick="btn_modifyAdminInfo_Click" CausesValidation="False">资料修改</asp:LinkButton></li>
-                                    <li role="separator" class="divider"></li>
                                     <li>
                                         <asp:LinkButton ID="btn_logoff" runat="server" OnClick="btn_logoff_Click" CausesValidation="False">
                                             <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;注销</asp:LinkButton></li>

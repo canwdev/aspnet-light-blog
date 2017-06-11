@@ -34,7 +34,7 @@
                             <span class="icon-bar"></span>
                         </button>
 
-                        <a class="navbar-brand" href="./"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><%=LoadSettings.LoadValue("site_title")%></a>
+                        <a class="navbar-brand" href="./"><span class="glyphicon glyphicon-home" aria-hidden="true"></span><%=dc_Settings.LoadValue("site_title")%></a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,6 +53,9 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="dc_admin/admin_login.aspx"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;
                                         <asp:Label ID="lbl_mgr" runat="server" Text="登录"></asp:Label></a></li>
+                                    <li>
+                                        <asp:LinkButton ID="btn_logoff" runat="server" OnClick="btn_logoff_Click" CausesValidation="False" Visible="False">
+                                            <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;注销</asp:LinkButton></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#" data-toggle="modal" data-target="#ShareModal">
                                         <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>&nbsp;分享</a></li>

@@ -16,12 +16,21 @@ public partial class dc_admin_admin : System.Web.UI.MasterPage
             {
                 String name = Request.Cookies["UserName"].Value.ToString();
                 String pswd = Request.Cookies["UserPassword"].Value.ToString();
-                lbl_username.Text = " "+name;
-                img_headimg.ImageUrl = LoadSettings.LoadUserHeadImg(1);
+                lbl_username.Text = " " + name;
+
                 if (!RSA.CheckIfLogin(name, pswd))
                 {
                     Response.Redirect("../");
                 }
+                if (dc_Settings.LoadUserHeadImg(name) != null)
+                {
+                    img_headimg.ImageUrl = dc_Settings.LoadUserHeadImg(name);
+                }
+                else
+                {
+                    img_headimg.ImageUrl = "../res/head.png";
+                }
+
             }
             else
             {
@@ -33,7 +42,7 @@ public partial class dc_admin_admin : System.Web.UI.MasterPage
             Console.WriteLine(exc.Message.ToString());
             Response.Redirect("../");
         }
-        
+
 
     }
 

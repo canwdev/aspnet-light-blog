@@ -63,30 +63,30 @@ public class RSA : Key
     /// <returns></returns>
     public static Boolean CheckIfLogin(String name, String pswd)
     {
-        /*try
-        {*/
-        DataClassesDataContext db = new DataClassesDataContext();
-        var results = from r in db.dc_user
-                      where r.uname.ToString() == name
-                      select r;
-        String decDbPassword = RSA.Decrypt(results.First().upassword.ToString());
-        if (name == null || pswd == null)
+        try
         {
-            return false;
+            DataClassesDataContext db = new DataClassesDataContext();
+            var results = from r in db.dc_user
+                          where r.uname.ToString() == name
+                          select r;
+            String decDbPassword = RSA.Decrypt(results.First().upassword.ToString());
+            if (name == null || pswd == null)
+            {
+                return false;
+            }
+            if (RSA.Decrypt(pswd) == decDbPassword)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
-        if (RSA.Decrypt(pswd) == decDbPassword)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-        /*}
         catch
         {
             return false;
-        }*/
+        }
 
 
     }

@@ -12,30 +12,46 @@ public partial class index : System.Web.UI.MasterPage
         try
         {
             img_headimg.ImageUrl = "./res/head.png";
-            //Page.Header.Title = LoadSettings.loadTitle();
+            //Page.Header.Title = dc_Settings.loadTitle();
             if (Request.Cookies["UserName"] != null && Request.Cookies["UserPassword"] != null)
             {
                 String name = Request.Cookies["UserName"].Value.ToString();
                 String pswd = Request.Cookies["UserPassword"].Value.ToString();
-                
+
                 if (RSA.CheckIfLogin(name, pswd))
                 {
                     lbl_username.Text = "" + name;
                     lbl_mgr.Text = "管理";
-                    img_headimg.ImageUrl = LoadSettings.LoadUserHeadImg(1);
-                } else
+                    btn_logoff.Visible = true;
+                    if (dc_Settings.LoadUserHeadImg(name) != null)
+                    {
+                        img_headimg.ImageUrl = dc_Settings.LoadUserHeadImg(name);
+                    }
+
+
+
+                }
+                else
                 {
-                    
+
                 }
             }
             else
             {
-                
+
             }
         }
         catch (Exception exc)
         {
             Console.WriteLine(exc.Message.ToString());
         }
+    }
+
+    //注销按钮
+    protected void btn_logoff_Click(object sender, EventArgs e)
+    {
+        Response.Cookies["UserName"].Value = null;
+        Response.Cookies["UserPassword"].Value = null;
+        Response.Redirect("./");
     }
 }

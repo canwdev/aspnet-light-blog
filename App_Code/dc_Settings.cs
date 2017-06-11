@@ -6,14 +6,15 @@ using System.Web;
 /// <summary>
 /// 此类为加载设置
 /// </summary>
-public class LoadSettings
+public class dc_Settings
 {
-    public LoadSettings()
+    public dc_Settings()
     {
         //
         // TODO: 在此处添加构造函数逻辑
         //
     }
+
 
     public static string LoadValue(string set_title1)
     {
@@ -31,5 +32,14 @@ public class LoadSettings
                       where r.uid == uid1
                       select r).First();
         return result.headimg;
+    }
+
+    public static string LoadUserHeadImg(string username)
+    {
+        DataClassesDataContext db = new DataClassesDataContext();
+        var img = (from r in db.dc_user
+                   where r.uname == username
+                   select r).First();
+        return img.headimg;
     }
 }
