@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="theme-color" content="#04519b">
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/docs.css" rel="stylesheet" />
     <link href="../css/animate.css" rel="stylesheet" />
@@ -15,6 +16,7 @@
     <link href="css/admin.css" rel="stylesheet" />
     <script src="../js/jquery-3.1.1.min.js"></script>
     <title>控制中心</title>
+    <asp:ContentPlaceHolder ID="ContentPlaceHolderHead" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -32,7 +34,7 @@
                         </button>
 
                         <a class="navbar-brand" href="../Default.aspx"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>
-                            <%=dc_Settings.LoadValue("site_title")%></a>
+                            <%=dcSettings.LoadValue("site_title")%></a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -48,14 +50,14 @@
                                     <li><a href="article_tag_list.aspx">文章标签管理</a></li>
                                 </ul>
                             </li>
-                            <!--
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">组件<span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">设置<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">自定义样式</a></li>
-                                    <li><a href="#">添加/删除模块</a></li>
+                                    <li><a href="admin_settings.aspx">全部设置</a></li>
+                                    <li><a href="debug.aspx">debug.aspx</a></li>
                                 </ul>
                             </li>
+                            <!--
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理<span class="badge">1</span><span class="caret"></span></a>
@@ -73,10 +75,9 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
                                     aria-haspopup="true" aria-expanded="false" style="padding: 9px;">
-                                    <asp:Image ID="img_headimg" runat="server" class="img-circle" style="border-radius: 50px !important;" height="32" width="32"/>
+                                    <asp:Image ID="img_headimg" runat="server" class="img-circle" style="border-radius: 50% !important;" height="32" width="32"/>
                                     <asp:Label ID="lbl_username" runat="server" Text="USERNAME"></asp:Label>&nbsp;<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    
                                     <li>
                                         <asp:LinkButton ID="LinkButton1" runat="server" OnClick="btn_modifyAdminInfo_Click" CausesValidation="False">资料修改</asp:LinkButton></li>
                                     <li>
@@ -93,7 +94,7 @@
                 </div>
             </nav>
             <!-- 容器 -->
-            <div class="container animated fadeIn">
+            <div class="container animated fadeIn" style="overflow-x: auto;">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
 

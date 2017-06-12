@@ -1,7 +1,5 @@
 ﻿
-$(document).ready(function () {
-    $("#{$active}").addClass('active');
-});
+
 //导航条菜单
 $('.nav .dropdown').mouseenter(function () {
     $(document).off('click.bs.dropdown.data-api');

@@ -33,7 +33,7 @@ public partial class dc_admin_article_addmod : System.Web.UI.Page
                 btn_delete.Visible = false;
                 Page.Header.Title = "写文章";
 
-                txt_author.Text = Request.Cookies["UserName"].Value.ToString();
+                txt_author.Text = dcSettings.LoadUserName(Request.Cookies["UserName"].Value.ToString()); ;
             }
         }
     }

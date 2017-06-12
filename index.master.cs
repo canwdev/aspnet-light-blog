@@ -12,7 +12,7 @@ public partial class index : System.Web.UI.MasterPage
         try
         {
             img_headimg.ImageUrl = "./res/head.png";
-            //Page.Header.Title = dc_Settings.loadTitle();
+            //Page.Header.Title = dcSettings.loadTitle();
             if (Request.Cookies["UserName"] != null && Request.Cookies["UserPassword"] != null)
             {
                 String name = Request.Cookies["UserName"].Value.ToString();
@@ -20,12 +20,12 @@ public partial class index : System.Web.UI.MasterPage
 
                 if (RSA.CheckIfLogin(name, pswd))
                 {
-                    lbl_username.Text = "" + name;
+                    lbl_username.Text = "" + dcSettings.LoadUserName(name); ;
                     lbl_mgr.Text = "管理";
                     btn_logoff.Visible = true;
-                    if (dc_Settings.LoadUserHeadImg(name) != null)
+                    if (dcSettings.LoadUserHeadImg(name) != null)
                     {
-                        img_headimg.ImageUrl = dc_Settings.LoadUserHeadImg(name);
+                        img_headimg.ImageUrl = dcSettings.LoadUserHeadImg(name);
                     }
 
 

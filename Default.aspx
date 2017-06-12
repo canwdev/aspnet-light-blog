@@ -4,9 +4,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="jumbotron hidden-xs animated fadeIn">
-        <h1><%=dc_Settings.LoadValue("hero_title")%></h1>
-        <p><%=dc_Settings.LoadValue("hero_context")%></p>
-        <p><a class="btn btn-primary btn-lg hvr-buzz" href="Detail.aspx?id=<%=dc_Settings.LoadValue("hero_link_id")%>" role="button">详细信息</a></p>
+        <h1><%=dcSettings.LoadValue("hero_title")%></h1>
+        <p><%=dcSettings.LoadValue("hero_context")%></p>
+        <p><a class="btn btn-primary btn-lg hvr-buzz" href="Detail.aspx?id=<%=dcSettings.LoadValue("hero_link_id")%>" role="button">详细信息</a></p>
     </div>
     <div class="row">
         <div class="col-md-10">

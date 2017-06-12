@@ -9,7 +9,7 @@ public partial class Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Page.Header.Title = dc_Settings.LoadValue("site_title");
+        Page.Header.Title = dcSettings.LoadValue("site_title");
     }
 
     

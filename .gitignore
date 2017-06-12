@@ -1,3 +1,6 @@
+#myignore
+res/upload/*.*
+
 # Windows thumbnail cache files
 Thumbs.db
 ehthumbs.db

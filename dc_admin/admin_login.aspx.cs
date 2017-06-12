@@ -31,6 +31,12 @@ public partial class admin_login : System.Web.UI.Page
             lbl_err.Text = exc.Message.ToString();
         }
 
+        // 判断是否允许注册
+        if (dcSettings.LoadValue("set_regist_enabled") != "yes")
+        {
+            panel_register.Visible = false;
+            panel_register_disabled.Visible = true;
+        }
     }
     protected void btn_login_Click(object sender, EventArgs e)
     {
@@ -94,6 +100,10 @@ public partial class admin_login : System.Web.UI.Page
                 if (results.Count() > 0)
                 {
                     lbl_err.Text = "注册失败：用户已存在";
+                }
+                else if (dcSettings.LoadValue("set_regist_enabled") != "yes")
+                {
+                    lbl_err.Text = "注册功能已关闭";
                 }
                 else
                 {

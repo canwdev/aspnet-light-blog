@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/dc_admin/admin.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="dc_admin_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <div class="bs-example bs-example-form" style="overflow-x: auto;">
     <table class="table table-hover">
             <colgroup>
-                <col width="15%">
-                <col>
+                <col width="25%">
+                <col width="75%">
             </colgroup>
             <thead>
             <tr>
@@ -62,7 +63,7 @@
                 </div>
             </div>
 
-
+        </div>
     
 </asp:Content>
 

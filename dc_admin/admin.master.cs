@@ -16,15 +16,15 @@ public partial class dc_admin_admin : System.Web.UI.MasterPage
             {
                 String name = Request.Cookies["UserName"].Value.ToString();
                 String pswd = Request.Cookies["UserPassword"].Value.ToString();
-                lbl_username.Text = " " + name;
+                lbl_username.Text = " " + dcSettings.LoadUserName(name);
 
                 if (!RSA.CheckIfLogin(name, pswd))
                 {
                     Response.Redirect("../");
                 }
-                if (dc_Settings.LoadUserHeadImg(name) != null)
+                if (dcSettings.LoadUserHeadImg(name) != null)
                 {
-                    img_headimg.ImageUrl = dc_Settings.LoadUserHeadImg(name);
+                    img_headimg.ImageUrl = dcSettings.LoadUserHeadImg(name);
                 }
                 else
                 {

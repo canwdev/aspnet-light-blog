@@ -29,6 +29,9 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 	
   #region 可扩展性方法定义
   partial void OnCreated();
+  partial void Insertbc_group(bc_group instance);
+  partial void Updatebc_group(bc_group instance);
+  partial void Deletebc_group(bc_group instance);
   partial void Insertdc_article(dc_article instance);
   partial void Updatedc_article(dc_article instance);
   partial void Deletedc_article(dc_article instance);
@@ -73,6 +76,14 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		OnCreated();
 	}
 	
+	public System.Data.Linq.Table<bc_group> bc_group
+	{
+		get
+		{
+			return this.GetTable<bc_group>();
+		}
+	}
+	
 	public System.Data.Linq.Table<dc_article> dc_article
 	{
 		get
@@ -102,6 +113,92 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<dc_user>();
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.bc_group")]
+public partial class bc_group : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _gid;
+	
+	private string _groupname;
+	
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OngidChanging(int value);
+    partial void OngidChanged();
+    partial void OngroupnameChanging(string value);
+    partial void OngroupnameChanged();
+    #endregion
+	
+	public bc_group()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_gid", DbType="Int NOT NULL", IsPrimaryKey=true)]
+	public int gid
+	{
+		get
+		{
+			return this._gid;
+		}
+		set
+		{
+			if ((this._gid != value))
+			{
+				this.OngidChanging(value);
+				this.SendPropertyChanging();
+				this._gid = value;
+				this.SendPropertyChanged("gid");
+				this.OngidChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_groupname", DbType="NVarChar(50)")]
+	public string groupname
+	{
+		get
+		{
+			return this._groupname;
+		}
+		set
+		{
+			if ((this._groupname != value))
+			{
+				this.OngroupnameChanging(value);
+				this.SendPropertyChanging();
+				this._groupname = value;
+				this.SendPropertyChanged("groupname");
+				this.OngroupnameChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }
@@ -458,7 +555,7 @@ public partial class dc_settings : INotifyPropertyChanging, INotifyPropertyChang
 	
 	private string _set_value;
 	
-	private string _set_intro;
+	private string _set_data;
 	
     #region 可扩展性方法定义
     partial void OnLoaded();
@@ -470,8 +567,8 @@ public partial class dc_settings : INotifyPropertyChanging, INotifyPropertyChang
     partial void Onset_titleChanged();
     partial void Onset_valueChanging(string value);
     partial void Onset_valueChanged();
-    partial void Onset_introChanging(string value);
-    partial void Onset_introChanged();
+    partial void Onset_dataChanging(string value);
+    partial void Onset_dataChanged();
     #endregion
 	
 	public dc_settings()
@@ -539,22 +636,22 @@ public partial class dc_settings : INotifyPropertyChanging, INotifyPropertyChang
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_set_intro", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-	public string set_intro
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_set_data", DbType="NVarChar(MAX)")]
+	public string set_data
 	{
 		get
 		{
-			return this._set_intro;
+			return this._set_data;
 		}
 		set
 		{
-			if ((this._set_intro != value))
+			if ((this._set_data != value))
 			{
-				this.Onset_introChanging(value);
+				this.Onset_dataChanging(value);
 				this.SendPropertyChanging();
-				this._set_intro = value;
-				this.SendPropertyChanged("set_intro");
-				this.Onset_introChanged();
+				this._set_data = value;
+				this.SendPropertyChanged("set_data");
+				this.Onset_dataChanged();
 			}
 		}
 	}
@@ -598,6 +695,8 @@ public partial class dc_user : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private string _headimg;
 	
+	private string _intro;
+	
     #region 可扩展性方法定义
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -614,6 +713,8 @@ public partial class dc_user : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnnicknameChanged();
     partial void OnheadimgChanging(string value);
     partial void OnheadimgChanged();
+    partial void OnintroChanging(string value);
+    partial void OnintroChanged();
     #endregion
 	
 	public dc_user()
@@ -661,7 +762,7 @@ public partial class dc_user : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_upassword", DbType="NVarChar(256)")]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_upassword", DbType="NVarChar(MAX)")]
 	public string upassword
 	{
 		get
@@ -737,6 +838,26 @@ public partial class dc_user : INotifyPropertyChanging, INotifyPropertyChanged
 				this._headimg = value;
 				this.SendPropertyChanged("headimg");
 				this.OnheadimgChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_intro", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string intro
+	{
+		get
+		{
+			return this._intro;
+		}
+		set
+		{
+			if ((this._intro != value))
+			{
+				this.OnintroChanging(value);
+				this.SendPropertyChanging();
+				this._intro = value;
+				this.SendPropertyChanged("intro");
+				this.OnintroChanged();
 			}
 		}
 	}
