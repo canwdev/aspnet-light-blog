@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="row row-offcanvas row-offcanvas-left">
         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation" data-example-id="togglable-tabs">
-            <ul id="myTabs" class="nav nav-sidebar">
+            <ul id="myTabs" class="nav nav-pills nav-stacked">
                 <li><a href="#admin_info_show" id="admin_info_show-tab" role="tab" data-toggle="tab" aria-controls="admin_info_show">概览</a></li>
                 <li><a href="#admin_info_mod" id="admin_info_mod-tab" role="tab" data-toggle="tab" aria-controls="admin_info_mod">修改资料</a></li>
                 <li><a href="#admin_pwd_mod" id="admin_pwd_mod-tab" role="tab" data-toggle="tab" aria-controls="admin_pwd_mod">修改密码</a></li>
@@ -30,10 +30,17 @@
                         <div class="form-horizontal">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">头像</label>
-                                <div class="col-sm-10">
-                                    <asp:FileUpload ID="FileUpload1" runat="server"/>
+                                <div class="col-sm-5">
                                     <asp:Image ID="img_headimg1" runat="server" Height="128" Width="128" class="img-thumbnail" />
-                                    <asp:Button ID="btn_upload_img" runat="server" Text="修改" CssClass="btn btn-default" OnClick="btn_UpImg_Click" CausesValidation="False"/>
+                                    <div class="btn-group">
+                                        <asp:Button ID="Button1" runat="server" Text="选择图片" ToolTip="推荐分辨率 128 x 128" CssClass="btn btn-default"
+                                            OnClientClick="ContentPlaceHolder1_FileUpload1.click(); return false;" />
+                                        <asp:Button ID="btn_upload_img" runat="server" Text="修改" CssClass="btn btn-default"
+                                            OnClick="btn_UpImg_Click" CausesValidation="False" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <asp:FileUpload ID="FileUpload1" runat="server" Style="visibility: hidden" />
                                 </div>
                             </div>
                             <div class="form-group">

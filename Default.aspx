@@ -15,21 +15,23 @@
 
                 <ItemTemplate>
                     <!-- 文章列表 -->
-                    <div class="bs-callout bs-callout-default">
+                    <div class="card">
                         <div class="media">
+                            <div class="media-left">
+                                <a href="Detail.aspx?id=<%# Eval("id") %>">
+                                    <div class="">
+                                        <img class="title_img" src="<%# Eval("title_img") %>" height="110" width="128" />
+                                    </div>
+                                </a>
+                            </div>
                             <div class="media-body">
-                                <h4 class="media-heading">
+                                <h3 class="media-heading">
                                     <a href="Detail.aspx?id=<%# Eval("id") %>">
                                         <asp:Label ID="titleLabel" runat="server" Text='<%# Eval("title") %>' /></a>
                                     <div style="float:right;"><small><%# Eval("time_update") %>&nbsp;&nbsp;<%# Eval("author") %></small></div>
-                                </h4>
+                                </h3>
                                 
                                 <asp:Label ID="article_introLabel" runat="server" Text='<%# Eval("article_intro") %>' /><a href="Detail.aspx?id=<%# Eval("id") %>">...查看更多</a>
-                            </div>
-                            <div class="media-right">
-                                <a href="Detail.aspx?id=<%# Eval("id") %>">
-                                    <img src="res/test.png" height="64px" width="64px" />
-                                </a>
                             </div>
                         </div>
                     </div>

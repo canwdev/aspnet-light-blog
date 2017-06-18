@@ -32,9 +32,6 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
   partial void Insertbc_group(bc_group instance);
   partial void Updatebc_group(bc_group instance);
   partial void Deletebc_group(bc_group instance);
-  partial void Insertdc_article(dc_article instance);
-  partial void Updatedc_article(dc_article instance);
-  partial void Deletedc_article(dc_article instance);
   partial void Insertdc_article_tag(dc_article_tag instance);
   partial void Updatedc_article_tag(dc_article_tag instance);
   partial void Deletedc_article_tag(dc_article_tag instance);
@@ -44,6 +41,9 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
   partial void Insertdc_user(dc_user instance);
   partial void Updatedc_user(dc_user instance);
   partial void Deletedc_user(dc_user instance);
+  partial void Insertdc_article(dc_article instance);
+  partial void Updatedc_article(dc_article instance);
+  partial void Deletedc_article(dc_article instance);
   #endregion
 	
 	public DataClassesDataContext() : 
@@ -84,14 +84,6 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<dc_article> dc_article
-	{
-		get
-		{
-			return this.GetTable<dc_article>();
-		}
-	}
-	
 	public System.Data.Linq.Table<dc_article_tag> dc_article_tag
 	{
 		get
@@ -113,6 +105,14 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<dc_user>();
+		}
+	}
+	
+	public System.Data.Linq.Table<dc_article> dc_article
+	{
+		get
+		{
+			return this.GetTable<dc_article>();
 		}
 	}
 }
@@ -178,236 +178,6 @@ public partial class bc_group : INotifyPropertyChanging, INotifyPropertyChanged
 				this._groupname = value;
 				this.SendPropertyChanged("groupname");
 				this.OngroupnameChanged();
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.dc_article")]
-public partial class dc_article : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _id;
-	
-	private string _title;
-	
-	private System.Nullable<System.DateTime> _time_commit;
-	
-	private System.Nullable<System.DateTime> _time_update;
-	
-	private string _author;
-	
-	private string _article_intro;
-	
-	private string _article_context;
-	
-	private System.Nullable<int> _article_tag_id;
-	
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void OntitleChanging(string value);
-    partial void OntitleChanged();
-    partial void Ontime_commitChanging(System.Nullable<System.DateTime> value);
-    partial void Ontime_commitChanged();
-    partial void Ontime_updateChanging(System.Nullable<System.DateTime> value);
-    partial void Ontime_updateChanged();
-    partial void OnauthorChanging(string value);
-    partial void OnauthorChanged();
-    partial void Onarticle_introChanging(string value);
-    partial void Onarticle_introChanged();
-    partial void Onarticle_contextChanging(string value);
-    partial void Onarticle_contextChanged();
-    partial void Onarticle_tag_idChanging(System.Nullable<int> value);
-    partial void Onarticle_tag_idChanged();
-    #endregion
-	
-	public dc_article()
-	{
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int id
-	{
-		get
-		{
-			return this._id;
-		}
-		set
-		{
-			if ((this._id != value))
-			{
-				this.OnidChanging(value);
-				this.SendPropertyChanging();
-				this._id = value;
-				this.SendPropertyChanged("id");
-				this.OnidChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-	public string title
-	{
-		get
-		{
-			return this._title;
-		}
-		set
-		{
-			if ((this._title != value))
-			{
-				this.OntitleChanging(value);
-				this.SendPropertyChanging();
-				this._title = value;
-				this.SendPropertyChanged("title");
-				this.OntitleChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_commit", DbType="DateTime")]
-	public System.Nullable<System.DateTime> time_commit
-	{
-		get
-		{
-			return this._time_commit;
-		}
-		set
-		{
-			if ((this._time_commit != value))
-			{
-				this.Ontime_commitChanging(value);
-				this.SendPropertyChanging();
-				this._time_commit = value;
-				this.SendPropertyChanged("time_commit");
-				this.Ontime_commitChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_update", DbType="DateTime")]
-	public System.Nullable<System.DateTime> time_update
-	{
-		get
-		{
-			return this._time_update;
-		}
-		set
-		{
-			if ((this._time_update != value))
-			{
-				this.Ontime_updateChanging(value);
-				this.SendPropertyChanging();
-				this._time_update = value;
-				this.SendPropertyChanged("time_update");
-				this.Ontime_updateChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_author", DbType="NVarChar(50)")]
-	public string author
-	{
-		get
-		{
-			return this._author;
-		}
-		set
-		{
-			if ((this._author != value))
-			{
-				this.OnauthorChanging(value);
-				this.SendPropertyChanging();
-				this._author = value;
-				this.SendPropertyChanged("author");
-				this.OnauthorChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_article_intro", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-	public string article_intro
-	{
-		get
-		{
-			return this._article_intro;
-		}
-		set
-		{
-			if ((this._article_intro != value))
-			{
-				this.Onarticle_introChanging(value);
-				this.SendPropertyChanging();
-				this._article_intro = value;
-				this.SendPropertyChanged("article_intro");
-				this.Onarticle_introChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_article_context", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-	public string article_context
-	{
-		get
-		{
-			return this._article_context;
-		}
-		set
-		{
-			if ((this._article_context != value))
-			{
-				this.Onarticle_contextChanging(value);
-				this.SendPropertyChanging();
-				this._article_context = value;
-				this.SendPropertyChanged("article_context");
-				this.Onarticle_contextChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_article_tag_id", DbType="Int")]
-	public System.Nullable<int> article_tag_id
-	{
-		get
-		{
-			return this._article_tag_id;
-		}
-		set
-		{
-			if ((this._article_tag_id != value))
-			{
-				this.Onarticle_tag_idChanging(value);
-				this.SendPropertyChanging();
-				this._article_tag_id = value;
-				this.SendPropertyChanged("article_tag_id");
-				this.Onarticle_tag_idChanged();
 			}
 		}
 	}
@@ -858,6 +628,260 @@ public partial class dc_user : INotifyPropertyChanging, INotifyPropertyChanged
 				this._intro = value;
 				this.SendPropertyChanged("intro");
 				this.OnintroChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.dc_article")]
+public partial class dc_article : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _id;
+	
+	private string _title;
+	
+	private System.Nullable<System.DateTime> _time_commit;
+	
+	private System.Nullable<System.DateTime> _time_update;
+	
+	private string _author;
+	
+	private string _article_intro;
+	
+	private string _article_context;
+	
+	private System.Nullable<int> _article_tag_id;
+	
+	private string _title_img;
+	
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OntitleChanging(string value);
+    partial void OntitleChanged();
+    partial void Ontime_commitChanging(System.Nullable<System.DateTime> value);
+    partial void Ontime_commitChanged();
+    partial void Ontime_updateChanging(System.Nullable<System.DateTime> value);
+    partial void Ontime_updateChanged();
+    partial void OnauthorChanging(string value);
+    partial void OnauthorChanged();
+    partial void Onarticle_introChanging(string value);
+    partial void Onarticle_introChanged();
+    partial void Onarticle_contextChanging(string value);
+    partial void Onarticle_contextChanged();
+    partial void Onarticle_tag_idChanging(System.Nullable<int> value);
+    partial void Onarticle_tag_idChanged();
+    partial void Ontitle_imgChanging(string value);
+    partial void Ontitle_imgChanged();
+    #endregion
+	
+	public dc_article()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int id
+	{
+		get
+		{
+			return this._id;
+		}
+		set
+		{
+			if ((this._id != value))
+			{
+				this.OnidChanging(value);
+				this.SendPropertyChanging();
+				this._id = value;
+				this.SendPropertyChanged("id");
+				this.OnidChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string title
+	{
+		get
+		{
+			return this._title;
+		}
+		set
+		{
+			if ((this._title != value))
+			{
+				this.OntitleChanging(value);
+				this.SendPropertyChanging();
+				this._title = value;
+				this.SendPropertyChanged("title");
+				this.OntitleChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_commit", DbType="DateTime")]
+	public System.Nullable<System.DateTime> time_commit
+	{
+		get
+		{
+			return this._time_commit;
+		}
+		set
+		{
+			if ((this._time_commit != value))
+			{
+				this.Ontime_commitChanging(value);
+				this.SendPropertyChanging();
+				this._time_commit = value;
+				this.SendPropertyChanged("time_commit");
+				this.Ontime_commitChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_update", DbType="DateTime")]
+	public System.Nullable<System.DateTime> time_update
+	{
+		get
+		{
+			return this._time_update;
+		}
+		set
+		{
+			if ((this._time_update != value))
+			{
+				this.Ontime_updateChanging(value);
+				this.SendPropertyChanging();
+				this._time_update = value;
+				this.SendPropertyChanged("time_update");
+				this.Ontime_updateChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_author", DbType="NVarChar(50)")]
+	public string author
+	{
+		get
+		{
+			return this._author;
+		}
+		set
+		{
+			if ((this._author != value))
+			{
+				this.OnauthorChanging(value);
+				this.SendPropertyChanging();
+				this._author = value;
+				this.SendPropertyChanged("author");
+				this.OnauthorChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_article_intro", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string article_intro
+	{
+		get
+		{
+			return this._article_intro;
+		}
+		set
+		{
+			if ((this._article_intro != value))
+			{
+				this.Onarticle_introChanging(value);
+				this.SendPropertyChanging();
+				this._article_intro = value;
+				this.SendPropertyChanged("article_intro");
+				this.Onarticle_introChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_article_context", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string article_context
+	{
+		get
+		{
+			return this._article_context;
+		}
+		set
+		{
+			if ((this._article_context != value))
+			{
+				this.Onarticle_contextChanging(value);
+				this.SendPropertyChanging();
+				this._article_context = value;
+				this.SendPropertyChanged("article_context");
+				this.Onarticle_contextChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_article_tag_id", DbType="Int")]
+	public System.Nullable<int> article_tag_id
+	{
+		get
+		{
+			return this._article_tag_id;
+		}
+		set
+		{
+			if ((this._article_tag_id != value))
+			{
+				this.Onarticle_tag_idChanging(value);
+				this.SendPropertyChanging();
+				this._article_tag_id = value;
+				this.SendPropertyChanged("article_tag_id");
+				this.Onarticle_tag_idChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_title_img", DbType="NVarChar(MAX)")]
+	public string title_img
+	{
+		get
+		{
+			return this._title_img;
+		}
+		set
+		{
+			if ((this._title_img != value))
+			{
+				this.Ontitle_imgChanging(value);
+				this.SendPropertyChanging();
+				this._title_img = value;
+				this.SendPropertyChanged("title_img");
+				this.Ontitle_imgChanged();
 			}
 		}
 	}

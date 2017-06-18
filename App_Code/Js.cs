@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
 
 /// <summary>
 ///Js 的摘要说明
@@ -46,5 +47,12 @@ public class Js
         string js = @"<Script language='JavaScript'>
         top.location='" + page + "'; </Script>";
         HttpContext.Current.Response.Write(js);
+    }
+
+    // 通过ScriptManager设置id的css_class样式
+    public static void SetCssById(Page page, string id, string css_class)
+    {
+        ScriptManager.RegisterStartupScript(page, page.GetType(), "new",
+            "document.getElementById('"+id+"').className = '"+css_class+"';", true);
     }
 }

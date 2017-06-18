@@ -6,7 +6,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="row row-offcanvas row-offcanvas-left">
         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation" data-example-id="togglable-tabs">
-            <ul id="myTabs" class="nav nav-sidebar">
+            <ul id="myTabs" class="nav nav-pills nav-stacked">
                 <li><a href="#settings_home" id="settings_home-tab" role="tab" data-toggle="tab" aria-controls="settings_home">网站设置</a></li>
                 <li><a href="#settings_1" id="settings_1-tab" role="tab" data-toggle="tab" aria-controls="settings_1">开关</a></li>
                 <%--<li><a href="#settings_2" id="settings_2-tab" role="tab" data-toggle="tab" aria-controls="settings_2">设置2</a></li>--%>
@@ -42,6 +42,18 @@
                                 <label for="ContentPlaceHolder1_txt_hreo_title" class="col-sm-2 control-label">首页标题</label>
                                 <div class="col-sm-5">
                                     <asp:TextBox ID="txt_hreo_title" runat="server" class="form-control" placeholder="首页标题" required="yes"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">首页图片</label>
+                                <div class="col-sm-3">
+                                    <div class="btn-group">
+                                        <asp:Button ID="btn_upload_homebg_select" runat="server" Text="选择图片" ToolTip="推荐分辨率 1280 x 853" OnClientClick="ContentPlaceHolder1_FileUpload1.click(); return false;" CssClass="btn btn-default" CausesValidation="False" />
+                                        <asp:Button ID="btn_upload_homebg" runat="server" Text="修改" class="btn btn-default" OnClick="btn_UpHomeBg_Click" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <asp:FileUpload ID="FileUpload1" runat="server" CssClass="txtFile btn btn-default" Style="visibility: hidden" />
                                 </div>
                             </div>
                             <div class="form-group">

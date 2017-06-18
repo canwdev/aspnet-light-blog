@@ -11,7 +11,7 @@ public partial class dc_admin_admin_settings : System.Web.UI.Page
     {
         if (!this.IsPostBack)
         {
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "new", "document.getElementById('settings_home').className = 'tab-pane fade active in';", true);
+            Js.SetCssById(this, "settings_home", "tab-pane fade active in");
             LoadWebsiteSettings();
         }
     }
@@ -33,10 +33,15 @@ public partial class dc_admin_admin_settings : System.Web.UI.Page
         }
     }
 
-    protected void btn_SaveWebSet_Click(object sender, EventArgs e)
+    protected void btn_UpHomeBg_Click(object sender, EventArgs e)
     {
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "new", "document.getElementById('settings_home').className = 'tab-pane fade active in';", true);
+        Js.SetCssById(this, "settings_home", "tab-pane fade active in");
+        dcSettings.UploadFileToPath(FileUpload1, "../res/");
+    }
 
+        protected void btn_SaveWebSet_Click(object sender, EventArgs e)
+    {
+        Js.SetCssById(this, "settings_home", "tab-pane fade active in");
         dcSettings.SaveValue("site_title", txt_site_title.Text);
         dcSettings.SaveValue("hero_title", txt_hreo_title.Text);
         dcSettings.SaveValue("hero_context", txt_hreo_context.Text);
@@ -45,7 +50,7 @@ public partial class dc_admin_admin_settings : System.Web.UI.Page
 
     protected void chk_SetRegEna_Changed(object sender, EventArgs e)
     {
-        ScriptManager.RegisterStartupScript(this, this.GetType(), "new", "document.getElementById('settings_1').className = 'tab-pane fade active in';", true);
+        Js.SetCssById(this, "settings_1", "tab-pane fade active in");
         if (chk_set_regist_enabled.Checked == true)
         {
             dcSettings.SaveValue("set_regist_enabled", "yes");

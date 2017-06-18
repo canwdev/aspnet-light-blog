@@ -170,4 +170,10 @@ public partial class dc_admin_article_addmod : System.Web.UI.Page
         Js.Alert("已删除");
         Response.Redirect("Default.aspx");
     }
+
+    protected void btn_SetTitleImg_Click(object sender, EventArgs e)
+    {
+        int id = int.Parse(Request.QueryString["id"]);
+        dcSettings.UploadTitleImg(FileUpload1, id);
+    }
 }

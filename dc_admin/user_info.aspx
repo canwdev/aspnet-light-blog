@@ -23,7 +23,6 @@
                             <asp:Label ID="nicknameLabel" runat="server" Text='<%# Eval("nickname") %>' />
                             <div>
                                 <a href="#admin_info_mod" onclick="parent.goAdmin_info_mod();">
-                                    
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                 </a>
                             </div>
