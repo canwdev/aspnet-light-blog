@@ -16,7 +16,7 @@ public partial class dc_admin_admin_modify_info : System.Web.UI.Page
         Page.Header.Title = "修改管理员资料";
         if (!this.IsPostBack)
         {
-            Js.SetCssById(this, "admin_info_show", "tab-pane fade active in");
+            Js.SetCssClass(this, "admin_info_show", "tab-pane fade active in");
             UimageLoad();
             UinfoLoad();
         }
@@ -57,13 +57,13 @@ public partial class dc_admin_admin_modify_info : System.Web.UI.Page
     //上传头像
     protected void btn_UpImg_Click(object sender, EventArgs e)
     {
-        Js.SetCssById(this, "admin_info_mod", "tab-pane fade active in");
+        Js.SetCssClass(this, "admin_info_mod", "tab-pane fade active in");
         dcSettings.UploadHeadImg(FileUpload1, dcSettings.LoadUserUid(), img_headimg1);
     }
 
     protected void btn_UpUinfo_Click(object sender, EventArgs e)
     {
-        Js.SetCssById(this, "admin_info_mod", "tab-pane fade active in");
+        Js.SetCssClass(this, "admin_info_mod", "tab-pane fade active in");
         var result = (from r in db.dc_user
                       where r.uid == dcSettings.LoadUserUid()
                       select r).First();
@@ -75,7 +75,7 @@ public partial class dc_admin_admin_modify_info : System.Web.UI.Page
 
     protected void btn_modpwd_Click(object sender, EventArgs e)
     {
-        Js.SetCssById(this, "admin_pwd_mod", "tab-pane fade active in");
+        Js.SetCssClass(this, "admin_pwd_mod", "tab-pane fade active in");
         try
         {
             String username = Request.Cookies["UserName"].Value.ToString();

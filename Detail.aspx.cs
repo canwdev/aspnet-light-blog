@@ -25,6 +25,7 @@ public partial class Detail : System.Web.UI.Page
             {
                 int id = int.Parse(Request.QueryString["id"]);
                 LoadArticle(id);
+                LoadTitleImage(id);
 
                 //如果管理员登录则显示编辑链接
                 if (RSA.CheckIfLogin(name, pswd))
@@ -38,6 +39,8 @@ public partial class Detail : System.Web.UI.Page
             {
                 int tagid = int.Parse(Request.QueryString["tagid"]);
                 LoadTag(tagid);
+                Js.SetCssClass(this, "a", "title_head", "detail_no_headimg");
+                Js.SetCssClass(this, "b", "title_img", "");
 
                 //如果管理员登录则显示编辑链接
                 if (RSA.CheckIfLogin(name, pswd))
@@ -58,7 +61,7 @@ public partial class Detail : System.Web.UI.Page
         }
     }
 
-    public void LoadArticle(int id)
+    protected void LoadArticle(int id)
     {
         try
         {
@@ -101,7 +104,7 @@ public partial class Detail : System.Web.UI.Page
         }
     }
 
-    public void LoadTag(int tagid)
+    protected void LoadTag(int tagid)
     {
         var res = (from r in db.dc_article_tag
                    where r.id == tagid
@@ -126,5 +129,25 @@ public partial class Detail : System.Web.UI.Page
         }
         htmlstring += "</ul>";
         lbl_article_context.Text = htmlstring;
+    }
+
+    protected void LoadTitleImage(int id)
+    {
+        var res = (from r in db.dc_article
+                   where r.id == id
+                   select r).First();
+        string src = res.title_img;
+        if (src != null)
+        {
+            Js.SetCssClass(this, "a", "title_head", "detail_head");
+            Js.SetCssClass(this, "b", "title_img", "detail_headimg");
+            Js.SetBackgroundImage(this, "c", "title_img", src);
+        }
+        else
+        {
+            Js.SetCssClass(this, "a", "title_head", "detail_no_headimg");
+            Js.SetCssClass(this, "b", "title_img", "");
+        }
+        
     }
 }

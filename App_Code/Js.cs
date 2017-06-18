@@ -50,9 +50,32 @@ public class Js
     }
 
     // 通过ScriptManager设置id的css_class样式
-    public static void SetCssById(Page page, string id, string css_class)
+    public static void SetCssClass(Page page, string id, string css_class)
     {
+
         ScriptManager.RegisterStartupScript(page, page.GetType(), "new",
             "document.getElementById('"+id+"').className = '"+css_class+"';", true);
+    }
+
+    // 通过ScriptManager设置id的背景图片样式
+    public static void SetBackgroundImage(Page page, string id, string src)
+    {
+        ScriptManager.RegisterClientScriptBlock(page, page.GetType(), "new",
+            "document.getElementById('" + id + "').style.backgroundImage=\"url("+ src + ")\";", true);
+    }
+
+    // 通过ScriptManager设置id的css_class样式2
+    public static void SetCssClass(Page page, string name, string id, string css_class)
+    {
+
+        ScriptManager.RegisterStartupScript(page, page.GetType(), name,
+            "document.getElementById('" + id + "').className = '" + css_class + "';", true);
+    }
+
+    // 通过ScriptManager设置id的背景图片样式2
+    public static void SetBackgroundImage(Page page, string name, string id, string src)
+    {
+        ScriptManager.RegisterStartupScript(page, page.GetType(), name,
+            "document.getElementById('" + id + "').style.backgroundImage=\"url(" + src + ")\";", true);
     }
 }
