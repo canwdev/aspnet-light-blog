@@ -36,10 +36,19 @@ public partial class dc_admin_admin_settings : System.Web.UI.Page
     protected void btn_UpHomeBg_Click(object sender, EventArgs e)
     {
         Js.SetCssClass(this, "settings_home", "tab-pane fade active in");
-        dcSettings.UploadFileToPath(FileUpload1, "../res/");
+        string fname = FileUpload1.FileName;        // 获取文件名
+        string fext = fname.Substring(fname.LastIndexOf("."));      // 获取文件格式
+        if (FileUpload1.HasFile && fext == ".jpg")
+        {
+            dcSettings.UploadFileToPath(FileUpload1, "../res/", "homepage_background");
+        }
+        else
+        {
+            Js.Alert("仅允许上传jpg格式作为首页封面");
+        }
     }
 
-        protected void btn_SaveWebSet_Click(object sender, EventArgs e)
+    protected void btn_SaveWebSet_Click(object sender, EventArgs e)
     {
         Js.SetCssClass(this, "settings_home", "tab-pane fade active in");
         dcSettings.SaveValue("site_title", txt_site_title.Text);

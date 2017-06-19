@@ -8,13 +8,6 @@ using System.Web.UI.WebControls;
 /// </summary>
 public class dcSettings
 {
-    public dcSettings()
-    {
-        //
-        // TODO: 在此处添加构造函数逻辑
-        //
-    }
-
     /// <summary>
     /// 加载设置
     /// </summary>
@@ -127,18 +120,18 @@ public class dcSettings
         }
     }
 
-    /// 上传jpg文件至指定文件夹
-    public static void UploadFileToPath(FileUpload FileUpload1, string fpath)
+    /// 上传图片至指定文件夹
+    public static void UploadFileToPath(FileUpload FileUpload1, string fpath, string newfname)
     {
         if (FileUpload1.HasFile)
         {
-            string fname = FileUpload1.FileName;        // 获取文件名
-            string fext = fname.Substring(fname.LastIndexOf("."));      // 获取文件格式
+            string fname = FileUpload1.FileName;        // 获取文件全名
+            string fext = System.IO.Path.GetExtension(fname).ToLower();      // 获取文件扩展名
 
-            if (fext == ".jpg")
+            if (fext == ".jpg" || fext == ".png" || fext == ".gif")
             {
-                var path = HttpContext.Current.Server.MapPath(fpath);   // 存放路径
-                FileUpload1.SaveAs(path + "homepage_background" + fext);
+                string path = HttpContext.Current.Server.MapPath(fpath);   // 存放路径
+                FileUpload1.SaveAs(path + newfname + fext);
             }
             else
             {
@@ -155,8 +148,8 @@ public class dcSettings
     {
         if (FileUpload1.HasFile)
         {
-            string fname = FileUpload1.FileName;        // 获取文件名
-            string fext = fname.Substring(fname.LastIndexOf("."));      // 获取文件格式
+            string fname = FileUpload1.FileName;        // 获取文件全名
+            string fext = System.IO.Path.GetExtension(fname).ToLower();      // 获取文件扩展名
 
             if (fext == ".jpg" || fext == ".png" || fext == ".gif")
             {
@@ -188,21 +181,23 @@ public class dcSettings
     {
         if (FileUpload1.HasFile)
         {
-            string fname = FileUpload1.FileName;        // 获取文件名
-            string fext = fname.Substring(fname.LastIndexOf("."));      // 获取文件格式
+            string fname = FileUpload1.FileName;        // 获取文件全名
+            string fext = System.IO.Path.GetExtension(fname).ToLower();      // 获取文件扩展名
 
             if (fext == ".jpg" || fext == ".png" || fext == ".gif")
             {
-                String imageBase64 = "";
-                fext = fext.Replace(".", "");
-                imageBase64 = "data:image/" + fext + ";base64," + Convert.ToBase64String(FileUpload1.FileBytes);
+                string spath = HttpContext.Current.Server.MapPath("~/res/upload/");   // 存放路径
+                string ffname = "timg" + DateTime.Now.ToString("yyyyddhhmmss") + fext;
+                string imgUrl = "./res/upload/" + ffname;
+
+                FileUpload1.SaveAs(spath+ffname);
 
                 DataClassesDataContext db = new DataClassesDataContext();
                 var result = (from r in db.dc_article
                               where r.id == id1
                               select r).First();
 
-                result.title_img = imageBase64;
+                result.title_img = imgUrl;
                 db.SubmitChanges();
             }
             else

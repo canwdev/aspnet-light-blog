@@ -39,8 +39,7 @@ public partial class Detail : System.Web.UI.Page
             {
                 int tagid = int.Parse(Request.QueryString["tagid"]);
                 LoadTag(tagid);
-                Js.SetCssClass(this, "a", "title_head", "detail_no_headimg");
-                Js.SetCssClass(this, "b", "title_img", "");
+                Js.SetCssClass(this, "b", "title_img", "fadeIn");
 
                 //如果管理员登录则显示编辑链接
                 if (RSA.CheckIfLogin(name, pswd))
@@ -139,14 +138,11 @@ public partial class Detail : System.Web.UI.Page
         string src = res.title_img;
         if (src != null)
         {
-            Js.SetCssClass(this, "a", "title_head", "detail_head");
-            Js.SetCssClass(this, "b", "title_img", "detail_headimg");
             Js.SetBackgroundImage(this, "c", "title_img", src);
         }
         else
         {
-            Js.SetCssClass(this, "a", "title_head", "detail_no_headimg");
-            Js.SetCssClass(this, "b", "title_img", "");
+            Js.SetCssClass(this, "b", "title_img", "fadeIn");
         }
         
     }

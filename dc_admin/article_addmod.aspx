@@ -25,7 +25,7 @@
 
             <div class="input-group">
                 <div class="btn-group">
-                    <asp:Button ID="btn_set_title_img" runat="server" Text="选择图片" CssClass="btn btn-default" ToolTip="推荐分辨率 110 x 128" 
+                    <asp:Button ID="btn_set_title_img" runat="server" Text="选择图片" CssClass="btn btn-default"  
                     OnClientClick="ContentPlaceHolder1_FileUpload1.click(); return false;" />
                 <asp:Button ID="btn_set_title_img_real" runat="server" Text="设置" CssClass="btn btn-default" OnClick="btn_SetTitleImg_Click"/>
                 </div>

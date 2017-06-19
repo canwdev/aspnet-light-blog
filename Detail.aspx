@@ -6,24 +6,27 @@
 
         <!-- 正文内容 -->
         <article>
-            <div id="title_head" class="detail_head">
-            <div id="title_img" class="detail_headimg">
-            </div>
+            <div id="title_img" class="jumbotron detail_headimg">
                 <h2 class="media-heading">
-                <asp:Label ID="lbl_title" runat="server" Text="标题"></asp:Label></h2>
-            <div class="text-right"><small>
-                <asp:Label ID="lbl_edit" runat="server" Text="编辑" Visible="False"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="glyphicon glyphicon-tag" aria-hidden="true"></span><asp:Label ID="lbl_tag" runat="server" Text="标签无效"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="glyphicon glyphicon-time" aria-hidden="true"></span><asp:Label ID="lbl_time_update" runat="server" Text="更新时间"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="glyphicon glyphicon-user" aria-hidden="true"></span><asp:Label ID="lbl_author" runat="server" Text="作者"></asp:Label>
-            </small></div>
-            
+                    <asp:Label ID="lbl_title" runat="server" Text="标题"></asp:Label></h2>
+                <div class="text-right">
+                    <small>
+                        <asp:Label ID="lbl_edit" runat="server" Text="编辑" Visible="False"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                        <asp:Label ID="lbl_tag" runat="server" Text="标签无效"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                        <asp:Label ID="lbl_time_update" runat="server" Text="更新时间"></asp:Label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        <asp:Label ID="lbl_author" runat="server" Text="作者"></asp:Label>
+                    </small>
+                </div>
             </div>
+
             <hr />
             <div class="main_article animated fadeIn">
                 <asp:Label ID="lbl_article_context" runat="server" Text="正文内容"></asp:Label>
             </div>
-            
+
 
         </article>
 
@@ -36,7 +39,7 @@
         </nav>-->
         <hr />
         <div>
-        <!-- 评论控件 
+            <!-- 评论控件 
             <div class="bs-example bs-example-form">
                 <div class=" form-inline">
                     <div class="input-group">
@@ -77,34 +80,34 @@
                     </li>
                 </ul>
             </nav>-->
-            
+
         </div>
-   </div>
-  
+    </div>
+
     <!-- 标签导航 -->
-        <div class="col-md-2">
-            <asp:ListView ID="ListView2" runat="server"></asp:ListView>
-            <div class="bs-callout bs-callout-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">标签</h3>
-                </div>
-                <ul class="nav bs-docs-sidenav">
-                    
-                    <asp:ListView ID="ListView3" runat="server" DataKeyNames="id" DataSourceID="LinqArticleTags">
-                        <ItemTemplate>
-                            <li class=""><a href="Detail.aspx?tagid=<%# Eval("id") %>">
-                                <asp:Label ID="article_tag_nameLabel" runat="server" Text='<%# Eval("article_tag_name") %>' /></a>
-                            </li>
-                        </ItemTemplate>
-
-                    </asp:ListView>
-
-                    <asp:LinqDataSource ID="LinqArticleTags" runat="server" ContextTypeName="DataClassesDataContext" EntityTypeName="" TableName="dc_article_tag">
-                    </asp:LinqDataSource>
-
-                </ul>
+    <div class="col-md-2">
+        <asp:ListView ID="ListView2" runat="server"></asp:ListView>
+        <div class="bs-callout bs-callout-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">标签</h3>
             </div>
+            <ul class="nav bs-docs-sidenav">
+
+                <asp:ListView ID="ListView3" runat="server" DataKeyNames="id" DataSourceID="LinqArticleTags">
+                    <ItemTemplate>
+                        <li class=""><a href="Detail.aspx?tagid=<%# Eval("id") %>">
+                            <asp:Label ID="article_tag_nameLabel" runat="server" Text='<%# Eval("article_tag_name") %>' /></a>
+                        </li>
+                    </ItemTemplate>
+
+                </asp:ListView>
+
+                <asp:LinqDataSource ID="LinqArticleTags" runat="server" ContextTypeName="DataClassesDataContext" EntityTypeName="" TableName="dc_article_tag">
+                </asp:LinqDataSource>
+
+            </ul>
         </div>
-    
+    </div>
+
 </asp:Content>
 

@@ -17,13 +17,13 @@ public partial class dc_admin_article_addmod : System.Web.UI.Page
             Bind_ddlTag();
             if (Request.QueryString["id"] != null)
             {
-                lbl_head_title.Text = "编辑文章";
-                btn_submit.Text = "修改";
-
-                btn_cancel.Visible = true;
-                Page.Header.Title = "编辑文章";
-
                 int id = int.Parse(Request.QueryString["id"]);
+
+                Page.Header.Title = "编辑文章";
+                lbl_head_title.Text = "<a href=\"../Detail.aspx?id=" + id + "\">编辑文章</a>";
+                btn_submit.Text = "修改";
+                btn_cancel.Visible = true;
+
                 ArticleLoad(id);
             }
             else

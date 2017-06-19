@@ -5,11 +5,11 @@
     background-position: top center;
     background-size: cover;
     color: white;
-    text-shadow: 0px 1px 3px rgba(0, 0, 0, 1);
+    text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
 }
 
     .jumbotron h1 {
-        text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6);
+        text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
     }
 
 .card {
@@ -42,12 +42,9 @@
 
 .main_article {
     font-size: 20px;
-    /*padding: 0px 15px 0px 15px;*/
 }
 
-.img-rounded {
-    border: none !important;
-}
+
 
 .title_img {
     background-image: url(../res/homepage_title_img.png);
@@ -56,31 +53,23 @@
     background-size: cover;
 }
 
-.detail_head {
-    min-height: 200px;
-    border: 1px solid #bbbbbb;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom: none;
-    padding: 0px 10px 0px 10px;
-}
-
 .detail_headimg {
-    /*background-image: url(../res/upload/2135277807.gif);*/
-    z-index: -1;
-    top: 0px;
-    position: relative;
-    width: 100%;
-    height: 200px;
-    margin-bottom: -50px;
+    background-image: none;
+    background-color: #808080;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    box-shadow: 0 -40px 100px white inset;
-    filter: blur(4px) brightness(100%);
+    /*filter: blur(3px) brightness(130%);*/
+    animation: fadeIn 1s ease !important;
+}
+
+.detail_headimg a {
+    color: white;
+    text-decoration: none;
 }
 
 .detail_no_headimg {
     padding: 10px 15px 0px 15px;
+    animation: fadeIn 10s ease !important;
 }
 
