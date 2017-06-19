@@ -36,6 +36,11 @@ public partial class dc_admin_admin : System.Web.UI.MasterPage
             {
                 Response.Redirect("../");
             }
+
+            if (!dcSettings.IsRoot(dcSettings.LoadUserUid()))
+            {
+                
+            }
         }
         catch (Exception exc)
         {

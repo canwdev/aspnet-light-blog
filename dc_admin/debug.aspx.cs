@@ -9,28 +9,32 @@ public partial class debug : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!this.IsPostBack)
-        {
+        //if (!dcSettings.IsRoot(dcSettings.LoadUserUid()))
+        //{
+        //    Response.Redirect("Default.aspx");
+        //}
+        //if (!this.IsPostBack)
+        //{
 
-            if (Request.Cookies["UserName"] != null && Request.Cookies["UserPassword"] != null)
-            {
-                String name = Request.Cookies["UserName"].Value.ToString();
-                String pswd = Request.Cookies["UserPassword"].Value.ToString();
-                lbl_info.Text += name + "<br/>" + pswd;
-                if (!RSA.CheckIfLogin(name, pswd))
-                {
-                    lbl_info.Text += "<br/>登录失败";
-                }
-                else
-                {
-                    lbl_info.Text += "<br/>登录ok";
-                }
-            }
-            else
-            {
-                lbl_info.Text += "no cookie";
-            }
-        }
+        //    if (Request.Cookies["UserName"] != null && Request.Cookies["UserPassword"] != null)
+        //    {
+        //        String name = Request.Cookies["UserName"].Value.ToString();
+        //        String pswd = Request.Cookies["UserPassword"].Value.ToString();
+        //        lbl_info.Text += name + "<br/>" + pswd;
+        //        if (!RSA.CheckIfLogin(name, pswd))
+        //        {
+        //            lbl_info.Text += "<br/>登录失败";
+        //        }
+        //        else
+        //        {
+        //            lbl_info.Text += "<br/>登录ok";
+        //        }
+        //    }
+        //    else
+        //    {
+        //        lbl_info.Text += "no cookie";
+        //    }
+        //}
     }
 
     protected void btn_enc_Click(object sender, EventArgs e)

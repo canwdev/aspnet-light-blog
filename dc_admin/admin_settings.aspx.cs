@@ -9,6 +9,11 @@ public partial class dc_admin_admin_settings : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!dcSettings.IsRoot(dcSettings.LoadUserUid()))
+        {
+            Response.Redirect("Default.aspx");
+        }
+
         if (!this.IsPostBack)
         {
             Js.SetCssClass(this, "settings_home", "tab-pane fade active in");

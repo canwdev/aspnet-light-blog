@@ -178,6 +178,7 @@ public class dcSettings
         }
     }
 
+    /// 上传文章封面
     public static void UploadTitleImg(FileUpload FileUpload1, int id1)
     {
         if (FileUpload1.HasFile)
@@ -220,6 +221,23 @@ public class dcSettings
         else
         {
             Js.Alert("未选择文件");
+        }
+    }
+
+    public static bool IsRoot(int id)
+    {
+        DataClassesDataContext db = new DataClassesDataContext();
+        var result = (from r in db.dc_user
+                      where r.uid == id
+                      select r).First();
+        
+        if (result.gid == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
