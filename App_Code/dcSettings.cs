@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
@@ -196,6 +197,17 @@ public class dcSettings
                 var result = (from r in db.dc_article
                               where r.id == id1
                               select r).First();
+
+                string do_path = "."+result.title_img.Substring(0, result.title_img.LastIndexOf("/")) + "/";
+                string do_name = result.title_img.Substring(result.title_img.LastIndexOf("/")).Replace("/", "");
+                string do_spath = HttpContext.Current.Server.MapPath(do_path);
+
+
+                if (File.Exists(do_spath+do_name))
+                {
+                    File.Delete(do_spath + do_name);
+                    Js.Alert("del:"+do_spath + do_name);
+                }
 
                 result.title_img = imgUrl;
                 db.SubmitChanges();
