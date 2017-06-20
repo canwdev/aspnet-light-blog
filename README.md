@@ -1,4 +1,4 @@
-﻿# Digital Creek Lightweight Blog
+﻿# Digital Creek Lightweight Blog.
 
 ## 项目说明
 ~~~
