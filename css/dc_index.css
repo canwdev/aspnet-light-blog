@@ -1,3 +1,6 @@
+a:hover {
+    text-decoration: none;
+}
 
 .jumbotron {
     background-image: url(../res/homepage_background.jpg);
@@ -12,12 +15,28 @@
         text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
     }
 
+.dropdown-menu {
+    animation: fadeIn 0.5s ease;
+}
+
 .card {
+    max-height: 210px;
+    min-height: 100px;
     padding: 10px;
     margin-top: 15px;
     margin-bottom: 15px;
     box-shadow: 0px 0px 2px #b2b2b2;
     border-radius: 5px;
+    overflow: hidden;
+}
+
+.card_title_img {
+    max-width: 100px;
+    max-height: 200px;
+    background-image: url(../res/homepage_title_img.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .data_pager {
@@ -44,12 +63,6 @@
     font-size: 20px;
 }
 
-.title_img {
-    background-image: url(../res/homepage_title_img.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
 
 .detail_headimg {
     background-image: none;

@@ -68,7 +68,7 @@
 
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
-                        <asp:Panel ID="panel_register_disabled" runat="server" Visible="False" CssClass=" text-center">
+                        <asp:Panel ID="panel_register_disabled" runat="server" Visible="False" CssClass="text-center">
                             <asp:Label ID="Label1" runat="server" Text="注册功能已关闭" Font-Size="Medium"></asp:Label></asp:Panel>
                         <asp:Panel ID="panel_register" runat="server" DefaultButton="btn_regist">
                             <div class="bs-example bs-example-form">

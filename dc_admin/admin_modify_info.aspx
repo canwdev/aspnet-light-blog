@@ -68,11 +68,17 @@
                                 <div class="col-sm-2">
                                     <asp:TextBox ID="txt_user_uid" runat="server" class="form-control" placeholder="UID" ReadOnly="True"></asp:TextBox>
                                 </div>
+                                <div class="col-sm-1" style="padding-top:10px;">
+                                    <span class="label label-default">标识，不可修改。</span>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">组ID</label>
                                 <div class="col-sm-2">
                                     <asp:TextBox ID="txt_user_gid" runat="server" class="form-control" placeholder="GID" ReadOnly="True"></asp:TextBox>
+                                </div>
+                                <div class="col-sm-1" style="padding-top:10px;">
+                                    <span class="label label-default">0为管理员，1为用户。</span>
                                 </div>
                             </div>
                         </div>
@@ -81,6 +87,7 @@
             </div>
             <!-- 修改密码 -->
             <div role="tabpanel" class="tab-pane fade" id="admin_pwd_mod" aria-labelledby="admin_pwd_mod-tab">
+                <asp:Panel ID="Panel_mod_pswd_disabled" runat="server" Visible="False" CssClass="text-center"><h3>无权修改该用户的密码。</h3></asp:Panel>
                 <asp:Panel ID="Panel_mod_pswd" runat="server" DefaultButton="btn_modpwd">
                     <div class="col-md-5 bs-example bs-example-form">
                         <legend>修改密码</legend>

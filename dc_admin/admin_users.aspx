@@ -3,7 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderHead" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
+    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="ContentPlaceHolder1_chk_set_regist_enabled" class="col-sm-2 control-label" style="line-height: 5px;">开启用户注册</label>
+                            <div class="col-sm-5">
+                                <asp:CheckBox ID="chk_set_regist_enabled" runat="server" OnCheckedChanged="chk_SetRegEna_Changed" AutoPostBack="True" />
+                            </div>
+                        </div>
+                    </div>
     <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="uid" DataSourceID="LinqDataSource1" 
         class="table table-hover" GridLines="None">
         <Columns>
@@ -21,20 +28,9 @@
                         </div>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="upassword" SortExpression="upassword">
-                <EditItemTemplate>
-                    <div style="max-width: 400px; overflow: hidden;">
-                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("upassword") %>'></asp:TextBox>
-                        </div>
-                </EditItemTemplate>
-                <ItemTemplate>
-                    <div style="max-width: 400px; overflow: hidden;">
-                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("upassword") %>'></asp:Label>
-                        </div>
-                </ItemTemplate>
-            </asp:TemplateField>
+            <asp:HyperLinkField DataNavigateUrlFields="uid" DataNavigateUrlFormatString="admin_modify_info.aspx?id={0}" Text="编辑" />
             
-            <asp:TemplateField ShowHeader="False" HeaderText="&lt;span class=&quot;glyphicon glyphicon-pencil&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;">
+            <asp:TemplateField ShowHeader="False" HeaderText="&lt;span class=&quot;glyphicon glyphicon-pencil&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;" Visible="False">
                 <EditItemTemplate>
                     <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update" Text="更新"></asp:LinkButton>
                     &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="取消"></asp:LinkButton>

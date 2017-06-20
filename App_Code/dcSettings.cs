@@ -97,6 +97,7 @@ public class dcSettings
         }
     }
 
+    /// 直接返回当前登录的用户id
     public static int LoadUserUid()
     {
         String name = HttpContext.Current.Request.Cookies["UserName"].Value.ToString();
@@ -145,6 +146,7 @@ public class dcSettings
         }
     }
 
+    /// 上传用户头像转换至base64至数据库
     public static void UploadHeadImg(FileUpload FileUpload1, int id, Image imgshow)
     {
         if (FileUpload1.HasFile)
@@ -199,16 +201,26 @@ public class dcSettings
                               where r.id == id1
                               select r).First();
 
-                string do_path = "."+result.title_img.Substring(0, result.title_img.LastIndexOf("/")) + "/";
-                string do_name = result.title_img.Substring(result.title_img.LastIndexOf("/")).Replace("/", "");
-                string do_spath = HttpContext.Current.Server.MapPath(do_path);
 
-
-                if (File.Exists(do_spath+do_name))
+                // 删除旧的封面
+                try
                 {
-                    File.Delete(do_spath + do_name);
-                    Js.Alert("del:"+do_spath + do_name);
+                    string do_path = "." + result.title_img.Substring(0, result.title_img.LastIndexOf("/")) + "/";
+                    string do_name = result.title_img.Substring(result.title_img.LastIndexOf("/")).Replace("/", "");
+                    string do_spath = HttpContext.Current.Server.MapPath(do_path);
+                    if (File.Exists(do_spath + do_name))
+                    {
+                        File.Delete(do_spath + do_name);
+                    }
                 }
+                catch
+                {
+
+                }
+               
+
+
+                
 
                 result.title_img = imgUrl;
                 db.SubmitChanges();
@@ -224,13 +236,33 @@ public class dcSettings
         }
     }
 
-    public static bool IsRoot(int id)
+    /// 判断是否为管理员
+    public static bool IsAdmin(int id)
     {
         DataClassesDataContext db = new DataClassesDataContext();
         var result = (from r in db.dc_user
                       where r.uid == id
                       select r).First();
         
+        if (result.gid == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /// 判断是否为管理员2
+    public static bool IsAdmin()
+    {
+        int id = LoadUserUid();
+        DataClassesDataContext db = new DataClassesDataContext();
+        var result = (from r in db.dc_user
+                      where r.uid == id
+                      select r).First();
+
         if (result.gid == 0)
         {
             return true;

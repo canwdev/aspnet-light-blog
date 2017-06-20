@@ -9,9 +9,9 @@ public partial class dc_admin_admin_settings : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!dcSettings.IsRoot(dcSettings.LoadUserUid()))
+        if (!dcSettings.IsAdmin())
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("error.aspx?code=403");
         }
 
         if (!this.IsPostBack)

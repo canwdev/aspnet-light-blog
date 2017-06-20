@@ -3,10 +3,10 @@
 <%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <div class="jumbotron hidden-xs animated fadeIn">
+    <div class="jumbotron animated fadeIn">
         <h1><%=dcSettings.LoadValue("hero_title")%></h1>
         <p><%=dcSettings.LoadValue("hero_context")%></p>
-        <p><a class="btn btn-primary btn-lg hvr-buzz" href="Detail.aspx?id=<%=dcSettings.LoadValue("hero_link_id")%>" role="button">详细信息</a></p>
+        <p><a class="btn btn-primary btn-lg hvr-grow" href="Detail.aspx?id=<%=dcSettings.LoadValue("hero_link_id")%>" role="button">详细信息</a></p>
     </div>
     <div class="row">
         <div class="col-md-10">
@@ -20,7 +20,7 @@
                             <div class="media-left">
                                 <a href="Detail.aspx?id=<%# Eval("id") %>">
                                     <div class="">
-                                        <img class="title_img" src="<%# Eval("title_img") %>" height="110" width="128" />
+                                        <img class="card_title_img"  style="border:none" src="<%# Eval("title_img") %>"/>
                                     </div>
                                 </a>
                             </div>

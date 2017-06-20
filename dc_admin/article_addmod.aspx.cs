@@ -17,6 +17,11 @@ public partial class dc_admin_article_addmod : System.Web.UI.Page
             Bind_ddlTag();
             if (Request.QueryString["id"] != null)
             {
+                if (!dcSettings.IsAdmin())
+                {
+                    Response.Redirect("article_addmod.aspx");
+                }
+
                 int id = int.Parse(Request.QueryString["id"]);
 
                 Page.Header.Title = "编辑文章";

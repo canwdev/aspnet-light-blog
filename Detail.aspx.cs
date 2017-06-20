@@ -27,8 +27,8 @@ public partial class Detail : System.Web.UI.Page
                 LoadArticle(id);
                 LoadTitleImage(id);
 
-                //如果管理员登录则显示编辑链接
-                if (RSA.CheckIfLogin(name, pswd))
+                //如果管理员登录则显示编辑文章链接
+                if (RSA.CheckIfLogin(name, pswd) && dcSettings.IsAdmin())
                 {
                     lbl_edit.Visible = true;
                     lbl_edit.Text = "<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>";
@@ -41,8 +41,8 @@ public partial class Detail : System.Web.UI.Page
                 LoadTag(tagid);
                 Js.SetCssClass(this, "b", "title_img", "fadeIn");
 
-                //如果管理员登录则显示编辑链接
-                if (RSA.CheckIfLogin(name, pswd))
+                //如果管理员登录则显示编辑标签链接
+                if (RSA.CheckIfLogin(name, pswd) && dcSettings.IsAdmin())
                 {
                     lbl_edit.Visible = true;
                     lbl_edit.Text = "<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>";
@@ -117,7 +117,7 @@ public partial class Detail : System.Web.UI.Page
 
         String htmlstring = "";
 
-        htmlstring += "<div class=\"alert alert-info\" role=\"alert\">标签简介：" + res.article_tag_intro+"</div>";
+        htmlstring += "<p><span class=\"label label-default\">标签简介：" + res.article_tag_intro+ "</span></p>";
         htmlstring += "<ul>";
         var article = from r in db.dc_article
                       where r.article_tag_id == tagid

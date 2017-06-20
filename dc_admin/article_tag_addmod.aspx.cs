@@ -12,6 +12,11 @@ public partial class dc_admin_article_addmod : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!dcSettings.IsAdmin())
+        {
+            Response.Redirect("error.aspx?code=403");
+        }
+
         if (!this.IsPostBack)
         {
             if (Request.QueryString["id"] != null)

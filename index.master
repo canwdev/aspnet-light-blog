@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="theme-color" content="#25b3eb">
+    <link rel="shortcut icon" href="res/logo.png" />
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/docs.css" rel="stylesheet" />
     <link href="css/animate.css" rel="stylesheet" />
@@ -40,16 +41,15 @@
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
+                        <%--<ul class="nav navbar-nav">
                             <li><a href="./">首页</a></li>
-                            
-                        </ul>
+                        </ul>--%>
 
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-                                    role="button" aria-haspopup="true" aria-expanded="false"  style="padding: 9px;">
-                                    <asp:Image ID="img_headimg" runat="server" class="img-circle" style="border-radius: 50% !important;" height="32" width="32"/>
+                                <a href="#" class="dropdown-toggle hvr-sweep-to-bottom" data-toggle="dropdown"
+                                    role="button" aria-haspopup="true" aria-expanded="false" style="padding: 9px;">
+                                    <asp:Image ID="img_headimg" runat="server" class="img-circle" Style="border-radius: 50% !important;" Height="32" Width="32" />
                                     <asp:Label ID="lbl_username" runat="server" Text="管理"></asp:Label>&nbsp;<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="dc_admin/admin_login.aspx"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;
@@ -65,7 +65,7 @@
                         </ul>
 
                     </div>
-                    
+
 
                 </div>
             </nav>
@@ -77,8 +77,8 @@
 
 
             <!-- 分享模态框 -->
-            <div id="ShareModal" class="modal fade bs-example-modal-sm" tabindex="-1" 
-                role="dialog" aria-labelledby="mySmallModalLabel" style="margin-top:100px;">
+            <div id="ShareModal" class="modal fade bs-example-modal-sm" tabindex="-1"
+                role="dialog" aria-labelledby="mySmallModalLabel" style="margin-top: 100px;">
                 <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content">
 
@@ -87,9 +87,9 @@
                             <h4 class="modal-title" id="mySmallModalLabel">分享</h4>
                         </div>
                         <div class="modal-body">
-                           <p>一个轻型博客，基于ASP.NET+Bootstrap</p>
-                           <p>By canw</p>
-                           <p><a href="https://github.com/canwdev/digital_creek">https://github.com/canwdev/digital_creek</a></p>
+                            <p>一个轻型博客，基于ASP.NET+Bootstrap</p>
+                            <p>By canw</p>
+                            <p><a href="https://github.com/canwdev/digital_creek">https://github.com/canwdev/digital_creek</a></p>
                             <p>感谢以下开源项目：</p>
                             <ul>
                                 <li><a href="http://v3.bootcss.com/">Bootstrap</a></li>
@@ -117,7 +117,7 @@
         </footer>
 
     </form>
-    
+
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="js/expand_dropdown_auto.js"></script>
 </body>

@@ -9,27 +9,89 @@ public partial class dc_admin_admin_modify_info : System.Web.UI.Page
 {
     private DataClassesDataContext db = new DataClassesDataContext();
 
+    int id = -1;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        lbl_modpwd_ok.Visible = false;
-        lbl_modpwd_error.Visible = false;
-        Page.Header.Title = "修改管理员资料";
+
         if (!this.IsPostBack)
         {
-            Js.SetCssClass(this, "admin_info_show", "tab-pane fade active in");
-            UimageLoad();
-            UinfoLoad();
+            lbl_modpwd_ok.Visible = false;
+            lbl_modpwd_error.Visible = false;
+            Page.Header.Title = "修改资料";
+            if (Request.QueryString["id"] != null && dcSettings.IsAdmin())
+            {
+                id = int.Parse(Request.QueryString["id"]);
+                Session["new_uid"] = id;
+
+                Page.Header.Title = "修改资料: " + id;
+
+                Panel_mod_pswd.Visible = false;
+                Panel_mod_pswd_disabled.Visible = true;
+                Js.SetCssClass(this, "admin_info_mod", "tab-pane fade active in");
+
+                UinfoLoad(id);
+            }
+            else
+            {
+                Js.SetCssClass(this, "admin_info_show", "tab-pane fade active in");
+                id = dcSettings.LoadUserUid();
+                Session["new_uid"] = id;
+                UinfoLoad(id);
+            }
+        }
+
+        id = int.Parse(Session["new_uid"].ToString());
+    }
+
+    protected string Porductid_tmp
+    {
+        get
+        {
+            if (ViewState["uid"] == null)
+            {
+                return string.Empty;
+            }
+            else
+            {
+                return (string)ViewState["uid"];
+            }
+        }
+
+        set
+        {
+            ViewState["uid"] = value;
         }
     }
 
-    protected void UimageLoad()
+    /// 加载用户信息
+    protected void UinfoLoad(int id)
+    {
+        UimageLoad(id);
+        var result = (from r in db.dc_user
+                      where r.uid == id
+                      select r).First();
+        txt_user_uname.Text = result.uname;
+        txt_user_nickname.Text = result.nickname;
+        txt_user_intro.Text = result.intro;
+        txt_user_uid.Text = result.uid.ToString();
+        txt_user_gid.Text = result.gid.ToString();
+
+        if (dcSettings.IsAdmin())
+        {
+            txt_user_gid.ReadOnly = false;
+            txt_user_uname.ReadOnly = false;
+        }
+    }
+
+    /// 加载用户头像
+    protected void UimageLoad(int id)
     {
         try
         {
-            String name = Request.Cookies["UserName"].Value.ToString();
-            if (dcSettings.LoadUserHeadImg(name) != null)
+            if (dcSettings.LoadUserHeadImg(id) != null)
             {
-                img_headimg1.ImageUrl = dcSettings.LoadUserHeadImg(name);
+                img_headimg1.ImageUrl = dcSettings.LoadUserHeadImg(id);
             }
             else
             {
@@ -38,41 +100,36 @@ public partial class dc_admin_admin_modify_info : System.Web.UI.Page
         }
         catch
         {
-
         }
     }
 
-    protected void UinfoLoad()
-    {
-        var result = (from r in db.dc_user
-                      where r.uid == dcSettings.LoadUserUid()
-                      select r).First();
-        txt_user_uname.Text = result.uname;
-        txt_user_nickname.Text = result.nickname;
-        txt_user_intro.Text = result.intro;
-        txt_user_uid.Text = result.uid.ToString();
-        txt_user_gid.Text = result.gid.ToString();
-    }
-
-    //上传头像
+    //上传头像按钮
     protected void btn_UpImg_Click(object sender, EventArgs e)
     {
         Js.SetCssClass(this, "admin_info_mod", "tab-pane fade active in");
-        dcSettings.UploadHeadImg(FileUpload1, dcSettings.LoadUserUid(), img_headimg1);
+        dcSettings.UploadHeadImg(FileUpload1, id, img_headimg1);
     }
 
+    /// 修改信息按钮
     protected void btn_UpUinfo_Click(object sender, EventArgs e)
     {
         Js.SetCssClass(this, "admin_info_mod", "tab-pane fade active in");
+
         var result = (from r in db.dc_user
-                      where r.uid == dcSettings.LoadUserUid()
+                      where r.uid == id
                       select r).First();
 
         result.nickname = txt_user_nickname.Text;
         result.intro = txt_user_intro.Text;
+        if (dcSettings.IsAdmin())
+        {
+            result.uname = txt_user_uname.Text;
+            result.gid = int.Parse(txt_user_gid.Text);
+        }
         db.SubmitChanges();
     }
 
+    /// 修改密码按钮
     protected void btn_modpwd_Click(object sender, EventArgs e)
     {
         Js.SetCssClass(this, "admin_pwd_mod", "tab-pane fade active in");
@@ -92,11 +149,8 @@ public partial class dc_admin_admin_modify_info : System.Web.UI.Page
                     var result = results.First();
                     result.upassword = new_enc_password;
                     db.SubmitChanges();
-
                     lbl_modpwd_ok.Text = "修改成功,请<a href=\"admin_login.aspx\">重新登录</a>";
                     lbl_modpwd_ok.Visible = true;
-
-
                 }
 
             }
