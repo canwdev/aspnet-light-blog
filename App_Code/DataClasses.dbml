@@ -13,14 +13,6 @@
       <Column Name="article_tag_intro" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
     </Type>
   </Table>
-  <Table Name="dbo.dc_settings" Member="dc_settings">
-    <Type Name="dc_settings">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="set_title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="set_value" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="set_data" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.dc_user" Member="dc_user">
     <Type Name="dc_user">
       <Column Name="uid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -43,6 +35,23 @@
       <Column Name="article_context" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="article_tag_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="title_img" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.dc_settings" Member="dc_settings">
+    <Type Name="dc_settings">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="set_title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="set_value" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.dc_article_comment" Member="dc_article_comment">
+    <Type Name="dc_article_comment">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="article_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="author_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="comment_text" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="authorized" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="time_commit" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

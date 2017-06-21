@@ -15,11 +15,8 @@
 
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
-
-                <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-
-                    <a class="navbar-brand" href="../"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>MyBlog - 登录</a>
+                    <a class="navbar-brand" href="../"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>登录</a>
                 </div>
             </div>
         </nav>
@@ -53,7 +50,7 @@
                                     <div style="float: left;">
                                         <asp:ValidationSummary ID="ValidationSummary1" runat="server"
                                             DisplayMode="List" ForeColor="#FF0066" ValidationGroup="valid_login" />
-                                        
+
                                     </div>
 
                                     <asp:Button ID="btn_login" runat="server" Text="登陆" class="btn"
@@ -69,7 +66,8 @@
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="profile" aria-labelledby="profile-tab">
                         <asp:Panel ID="panel_register_disabled" runat="server" Visible="False" CssClass="text-center">
-                            <asp:Label ID="Label1" runat="server" Text="注册功能已关闭" Font-Size="Medium"></asp:Label></asp:Panel>
+                            <asp:Label ID="Label1" runat="server" Text="注册功能已关闭_(:3」∠)_" Font-Size="Medium"></asp:Label>
+                        </asp:Panel>
                         <asp:Panel ID="panel_register" runat="server" DefaultButton="btn_regist">
                             <div class="bs-example bs-example-form">
                                 <%--注册</legend>--%>

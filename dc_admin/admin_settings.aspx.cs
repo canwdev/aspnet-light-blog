@@ -28,13 +28,24 @@ public partial class dc_admin_admin_settings : System.Web.UI.Page
         txt_hreo_context.Text = dcSettings.LoadValue("hero_context");
         txt_hero_link_id.Text = dcSettings.LoadValue("hero_link_id");
 
-        if (dcSettings.LoadValue("set_regist_enabled") == "yes")
+        switch (dcSettings.LoadValue("set_regist_enabled"))
         {
-            chk_set_regist_enabled.Checked = true;
+            case "yes":
+                chk_set_regist_enabled.Checked = true;
+                break;
+            default:
+                chk_set_regist_enabled.Checked = false;
+                break;
         }
-        else
+
+        switch (dcSettings.LoadValue("set_comment_enabled"))
         {
-            chk_set_regist_enabled.Checked = false;
+            case "yes":
+                chk_set_comment_enabled.Checked = true;
+                break;
+            default:
+                chk_set_comment_enabled.Checked = false;
+                break;
         }
     }
 
@@ -72,6 +83,19 @@ public partial class dc_admin_admin_settings : System.Web.UI.Page
         else
         {
             dcSettings.SaveValue("set_regist_enabled", "no");
+        }
+    }
+
+    protected void chk_SetCommEna_Changed(object sender, EventArgs e)
+    {
+        Js.SetCssClass(this, "settings_1", "tab-pane fade active in");
+        if (chk_set_comment_enabled.Checked == true)
+        {
+            dcSettings.SaveValue("set_comment_enabled", "yes");
+        }
+        else
+        {
+            dcSettings.SaveValue("set_comment_enabled", "no");
         }
     }
 }

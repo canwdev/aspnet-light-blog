@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="theme-color" content="#25b3eb">
+    <meta name="theme-color" content="#fff">
     <link rel="shortcut icon" href="res/logo.png" />
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/docs.css" rel="stylesheet" />
@@ -88,17 +88,7 @@
                         </div>
                         <div class="modal-body">
                             <p>一个轻型博客，基于ASP.NET+Bootstrap</p>
-                            <p>By canw</p>
                             <p><a href="https://github.com/canwdev/digital_creek">https://github.com/canwdev/digital_creek</a></p>
-                            <p>感谢以下开源项目：</p>
-                            <ul>
-                                <li><a href="http://v3.bootcss.com/">Bootstrap</a></li>
-                                <li><a href="http://bootswatch.com/cerulean/">Bootstrap Cerulean Theme</a></li>
-                                <li><a href="https://github.com/daneden/animate.css">animate.css</a></li>
-                                <li><a href="https://github.com/IanLunn/Hover">hover.css</a></li>
-                                <li><a href="https://jquery.com/">jQuery</a></li>
-                                <li><a href="https://github.com/wangfupeng1988/wangEditor">wangEditor</a></li>
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -112,7 +102,7 @@
                     <li><a href="https://github.com/canwdev">GitHub仓库</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#ShareModal">关于</a></li>
                 </ul>
-                <p>Beta 版权所有 &copy;2017 DigitalCreek by <a href="mailto:example@example.com" target="_blank">canwdev</a></p>
+                <p>Beta 版权所有 &copy;2017 DigitalCreek</p>
             </div>
         </footer>
 

@@ -58,7 +58,23 @@ public class dcSettings
         return result.headimg;
     }
 
-    /// 如果没有昵称则加载用户名
+    /// 加载用户名
+    public static string LoadUserName()
+    {
+        DataClassesDataContext db = new DataClassesDataContext();
+        var result = (from r in db.dc_user
+                      where r.uid == LoadUserUid()
+                      select r).First();
+        if (result.nickname != null)
+        {
+            return result.nickname;
+        }
+        else
+        {
+            return result.uname;
+        }
+    }
+    /// 加载用户名by uname
     public static string LoadUserName(string username)
     {
         DataClassesDataContext db = new DataClassesDataContext();
@@ -74,6 +90,24 @@ public class dcSettings
             return result.uname;
         }
     }
+
+    /// 加载用户名by uid
+    public static string LoadUserName(int id)
+    {
+        DataClassesDataContext db = new DataClassesDataContext();
+        var result = (from r in db.dc_user
+                      where r.uid == id
+                      select r).First();
+        if (result.nickname != null)
+        {
+            return result.nickname;
+        }
+        else
+        {
+            return result.uname;
+        }
+    }
+
 
     /// 验证登录并返回用户id
     public static int LoadUserUid(string name, string pswd)

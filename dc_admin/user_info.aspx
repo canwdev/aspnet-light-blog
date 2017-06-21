@@ -17,39 +17,26 @@
         <div class="uinfo_container">
             <asp:Image ID="img_headimg1" runat="server" Height="128" Width="128" class="img-circle" />
             <div class="uinfo_main">
-                <asp:ListView ID="ListView1" runat="server" DataSourceID="LinqDataSource1">
-                    <ItemTemplate>
+
                         <h3>
-                            <asp:Label ID="nicknameLabel" runat="server" Text='<%# Eval("nickname") %>' />
-                            <div>
-                                <a href="#admin_info_mod" onclick="parent.goAdmin_info_mod();">
+                            <asp:Label ID="lbl_nickname" runat="server" Text='' />
+                                <div><a href="#admin_info_mod" onclick="parent.goAdmin_info_mod();">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                </a>
-                            </div>
+                                </a></div>
                         </h3>
-                        <h5><asp:Label ID="Label1" runat="server" Text='<%# Eval("intro") %>' /></h5>
+                        <h5><asp:Label ID="lbl_intro" runat="server" Text='' /></h5>
                         <hr />
                         <ul>
                             <li>
                                 <div>用户名</div>
-                                <asp:Label ID="unameLabel" runat="server" Text='<%# Eval("uname") %>' /></li>
+                                <asp:Label ID="lbl_uname" runat="server" Text='' /></li>
                             <li>
                                 <div>ID</div>
-                                <asp:Label ID="uidLabel" runat="server" Text='<%# Eval("uid") %>' /></li>
+                                <asp:Label ID="lbl_uid" runat="server" Text='' /></li>
                             <li>
                                 <div>组ID</div>
-                                <asp:Label ID="gidLabel" runat="server" Text='<%# Eval("gid") %>' /></li>
+                                <asp:Label ID="lbl_gid" runat="server" Text='' /></li>
                         </ul>
-                    </ItemTemplate>
-
-                </asp:ListView>
-
-                <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="DataClassesDataContext" EntityTypeName="" Select="new (uid, uname, nickname, gid, intro)" TableName="dc_user" Where="uname == @uname">
-                    <WhereParameters>
-                        <asp:CookieParameter CookieName="UserName" DefaultValue="" Name="uname" Type="String" />
-                    </WhereParameters>
-                </asp:LinqDataSource>
-
             </div>
         </div>
     </form>

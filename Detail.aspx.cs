@@ -11,9 +11,10 @@ public partial class Detail : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
         if (!this.IsPostBack)
         {
-            String name="null", pswd="null";
+            String name = "null", pswd = "null";
 
             if (Request.Cookies["UserName"] != null)
             {
@@ -21,43 +22,71 @@ public partial class Detail : System.Web.UI.Page
                 pswd = Request.Cookies["UserPassword"].Value.ToString();
             }
 
-            if (Request.QueryString["id"] != null)
+            try
             {
-                int id = int.Parse(Request.QueryString["id"]);
-                LoadArticle(id);
-                LoadTitleImage(id);
-
-                //如果管理员登录则显示编辑文章链接
-                if (RSA.CheckIfLogin(name, pswd) && dcSettings.IsAdmin())
+                if (Request.QueryString["id"] != null)
                 {
-                    lbl_edit.Visible = true;
-                    lbl_edit.Text = "<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>";
-                    lbl_edit.Text += "<a href=\"./dc_admin/article_addmod.aspx?id=" + id + "\">编辑文章</a>";
+                    int id = int.Parse(Request.QueryString["id"]);
+                    LoadArticle(id);
+                    LoadTitleImage(id);
+
+                    if (RSA.CheckIfLogin(name, pswd))
+                    {
+                        // 加载评论控件
+                        // 判断是否允许评论
+                        if (dcSettings.LoadValue("set_comment_enabled") != "yes")
+                        {
+                            Panel_comment_disabled.Visible = true;
+                            Panel_comment_need_login.Visible = false;
+                            Panel_comment_area.Visible = false;
+                        }
+                        else
+                        {
+                            Panel_comment_need_login.Visible = false;
+                            Panel_comment_area.Visible = true;
+                        }
+                        LoadCommentArea();
+
+                        //如果管理员登录则显示编辑文章链接
+                        if (dcSettings.IsAdmin())
+                        {
+                            lbl_edit.Visible = true;
+                            lbl_edit.Text = "<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>";
+                            lbl_edit.Text += "<a href=\"./dc_admin/article_addmod.aspx?id=" + id + "\">编辑文章</a>";
+                        }
+                    }
+
+                }
+                else if (Request.QueryString["tagid"] != null)
+                {
+                    int tagid = int.Parse(Request.QueryString["tagid"]);
+                    LoadTag(tagid);
+                    Js.SetCssClass(this, "b", "title_img", "fadeIn");
+                    Panel_comment_all.Visible = false;
+
+                    //如果管理员登录则显示编辑标签链接
+                    if (RSA.CheckIfLogin(name, pswd) && dcSettings.IsAdmin())
+                    {
+                        lbl_edit.Visible = true;
+                        lbl_edit.Text = "<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>";
+                        lbl_edit.Text += "<a href=\"./dc_admin/article_tag_addmod.aspx?id=" + tagid + "\">编辑标签</a>";
+                    }
                 }
             }
-            else if (Request.QueryString["tagid"] != null)
+            catch
             {
-                int tagid = int.Parse(Request.QueryString["tagid"]);
-                LoadTag(tagid);
-                Js.SetCssClass(this, "b", "title_img", "fadeIn");
-
-                //如果管理员登录则显示编辑标签链接
-                if (RSA.CheckIfLogin(name, pswd) && dcSettings.IsAdmin())
-                {
-                    lbl_edit.Visible = true;
-                    lbl_edit.Text = "<span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>";
-                    lbl_edit.Text += "<a href=\"./dc_admin/article_tag_addmod.aspx?id=" + tagid + "\">编辑标签</a>";
-                }
-            }
-            else
-            {
-                Page.Header.Title = "未找到文章 - "+ dcSettings.LoadValue("site_title");
+                Page.Header.Title = "未找到文章 - " + dcSettings.LoadValue("site_title");
                 lbl_title.Text = "404 Page Not Found";
-
+                Panel_comment_all.Visible = false;
             }
 
-            
+
         }
+    }
+
+    protected void LoadCommentArea()
+    {
+        txt_uname.Text = dcSettings.LoadUserName();
     }
 
     protected void LoadArticle(int id)
@@ -67,7 +96,7 @@ public partial class Detail : System.Web.UI.Page
             var result = (from r in db.dc_article
                           where r.id == id
                           select r).First();
-            
+
 
             Page.Header.Title = result.title + " - " + dcSettings.LoadValue("site_title");
             lbl_title.Text = "<a href=\"Detail.aspx?id=" + result.id + "\">" + result.title + "</a>";
@@ -117,7 +146,7 @@ public partial class Detail : System.Web.UI.Page
 
         String htmlstring = "";
 
-        htmlstring += "<p><span class=\"label label-default\">标签简介：" + res.article_tag_intro+ "</span></p>";
+        htmlstring += "<p><span class=\"label label-default\">标签简介：" + res.article_tag_intro + "</span></p>";
         htmlstring += "<ul>";
         var article = from r in db.dc_article
                       where r.article_tag_id == tagid
@@ -144,6 +173,22 @@ public partial class Detail : System.Web.UI.Page
         {
             Js.SetCssClass(this, "b", "title_img", "fadeIn");
         }
-        
+
+    }
+
+    protected void btn_submit_comment_Click(object sender, EventArgs e)
+    {
+        dc_article_comment comment = new dc_article_comment();
+        comment.article_id = int.Parse(Request.QueryString["id"]);
+        comment.author_id = dcSettings.LoadUserUid();
+        comment.comment_text = txt_comment_text.Text;
+        comment.authorized = "yes";     // 是否审核通过（yes）
+        comment.time_commit = DateTime.Now;
+
+        db.dc_article_comment.InsertOnSubmit(comment);
+        db.SubmitChanges();
+
+        Response.Redirect("Detail.aspx?id="+ Request.QueryString["id"] + "#id_comment_area");
+
     }
 }

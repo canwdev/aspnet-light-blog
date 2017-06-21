@@ -6,16 +6,11 @@
 VisualStudio 2017 + SQL Server 2008 R2
 ~~~
 
-## 目前实现的功能
-~~~
-1. 管理员注册、登录、修改
-2. 文章发布、编辑、删除
-3. 标签分类文章
-4. 网站设置选项
-~~~
-
 ## 更新日志
 ~~~
+2017-6-21
+1. 基础评论、评论管理功能实现
+
 2017-6-20
 1. 实现首页、文章标题图像上传
 2. 实现用户管理，权限区分
@@ -27,11 +22,15 @@ VisualStudio 2017 + SQL Server 2008 R2
 3. 实现系统设置：标题、首页内容、用户注册开关
 4. 新增RSA加解密工具、提升用户体验
 
-2017-6-10
-修复严重bug：在IIS下不能登录的问题，修复秘钥登录方法
+2017-6-10 & before
+1. 管理员注册、登录、修改
+2. 文章发布、编辑、删除
+3. 标签分类文章
+4. 网站设置选项
+5. 修复在IIS下不能登录的问题，使用新的秘钥方法
 ~~~
 
-## 部分目录文件结构 0620
+## 部分目录文件结构 20170621
 ~~~
 digital_creek				根目录		
 │  Default.aspx			首页
@@ -59,6 +58,7 @@ digital_creek				根目录
 │    admin_settings.aspx			设置
 │    admin_users.aspx				用户管理
 │    article_addmod.aspx			添加与修改文章
+│    article_comment.aspx			评论管理
 │    article_list.aspx				显示文章编辑列表
 │    article_tag_addmod.aspx		添加与修改文章标签
 │    article_tag_list.aspx			显示标签编辑列表
@@ -74,7 +74,6 @@ digital_creek				根目录
 
 ## 感谢以下开源项目
 * [Bootstrap](http://v3.bootcss.com/)
-* [Bootstrap Cerulean Theme](http://bootswatch.com/cerulean/)
 * [animate.css](https://github.com/daneden/animate.css)
 * [hover.css](https://github.com/IanLunn/Hover)
 * [jQuery](https://jquery.com/)

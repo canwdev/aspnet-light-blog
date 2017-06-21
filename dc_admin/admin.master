@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="theme-color" content="#04519b">
+    <meta name="theme-color" content="#000">
     <link rel="shortcut icon" href="../res/logo.png" />
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../css/docs.css" rel="stylesheet" />
@@ -57,22 +57,11 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="admin_settings.aspx">全部设置</a></li>
                                     <li><a href="admin_users.aspx">用户管理</a></li>
+                                    <li><a href="article_comment.aspx">评论管理 <span class="badge"><asp:Label ID="lbl_badge_new_comment" runat="server" Text="0" Visible="False"></asp:Label></span></a></li>
                                     <li><a href="debug.aspx">调试工具</a></li>
                                 </ul>
                             </li>
-                            <!--
 
-                            <li class="dropdown ">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理<span class="badge">1</span><span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">用户管理</a></li>
-                                    <li><a href="#">评论管理</a></li>
-                                    <li><a href="#">评论审核 <span class="badge">1</span></a></li>
-                                </ul>
-                            </li>
-
-                            <li><a href="debug.aspx">debug</a></li>
-                        -->
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown ">

@@ -14,11 +14,11 @@
     <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AutoGenerateColumns="False" DataKeyNames="uid" DataSourceID="LinqDataSource1" 
         class="table table-hover" GridLines="None">
         <Columns>
-            <asp:BoundField DataField="uid" HeaderText="uid" InsertVisible="False" ReadOnly="True" SortExpression="uid" />
-            <asp:BoundField DataField="gid" HeaderText="gid" SortExpression="gid" />
-            <asp:BoundField DataField="uname" HeaderText="uname" SortExpression="uname" />
-            <asp:BoundField DataField="nickname" HeaderText="nickname" SortExpression="nickname" />
-            <asp:TemplateField HeaderText="intro" SortExpression="intro">
+            <asp:BoundField DataField="uid" HeaderText="UID" InsertVisible="False" ReadOnly="True" SortExpression="uid" />
+            <asp:BoundField DataField="gid" HeaderText="组ID" SortExpression="gid" />
+            <asp:BoundField DataField="uname" HeaderText="注册名" SortExpression="uname" />
+            <asp:BoundField DataField="nickname" HeaderText="昵称" SortExpression="nickname" />
+            <asp:TemplateField HeaderText="简介" SortExpression="intro">
                 <EditItemTemplate>
                     <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("intro") %>'></asp:TextBox>
                 </EditItemTemplate>
@@ -28,7 +28,7 @@
                         </div>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:HyperLinkField DataNavigateUrlFields="uid" DataNavigateUrlFormatString="admin_modify_info.aspx?id={0}" Text="编辑" />
+            <asp:HyperLinkField DataNavigateUrlFields="uid" DataNavigateUrlFormatString="admin_modify_info.aspx?id={0}" Text="编辑" HeaderText="编辑" />
             
             <asp:TemplateField ShowHeader="False" HeaderText="&lt;span class=&quot;glyphicon glyphicon-pencil&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;" Visible="False">
                 <EditItemTemplate>

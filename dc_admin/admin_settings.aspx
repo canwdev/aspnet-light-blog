@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 <label for="ContentPlaceHolder1_txt_site_title" class="col-sm-2 control-label">网站标题</label>
                                 <div class="col-sm-5">
-                                    <asp:TextBox ID="txt_site_title" runat="server" class="form-control" placeholder="网站标题" required="yes" autofocus="autofocus"></asp:TextBox>
+                                    <asp:TextBox ID="txt_site_title" runat="server" class="form-control" placeholder="网站标题" required="yes"></asp:TextBox>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">链接的文章ID</label>
-                                <div class="col-sm-1">
+                                <div class="col-sm-2">
                                     <asp:TextBox ID="txt_hero_link_id" runat="server" class="form-control" placeholder="ID"></asp:TextBox>
                                 </div>
                             </div>
@@ -81,6 +81,12 @@
                             <label for="ContentPlaceHolder1_chk_set_regist_enabled" class="col-sm-2 control-label" style="line-height: 5px;">开启用户注册</label>
                             <div class="col-sm-5">
                                 <asp:CheckBox ID="chk_set_regist_enabled" runat="server" OnCheckedChanged="chk_SetRegEna_Changed" AutoPostBack="True" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ContentPlaceHolder1_chk_set_comment_enabled" class="col-sm-2 control-label" style="line-height: 5px;">开启评论</label>
+                            <div class="col-sm-5">
+                                <asp:CheckBox ID="chk_set_comment_enabled" runat="server" OnCheckedChanged="chk_SetCommEna_Changed" AutoPostBack="True" />
                             </div>
                         </div>
                     </div>

@@ -12,7 +12,9 @@
         <div class="col-md-10">
 
             <asp:ListView ID="ListView1" runat="server" DataKeyNames="id" DataSourceID="LinqHomePageArticle">
-
+                <EmptyDataTemplate>
+                    <div class="bs-callout bs-callout">没有文章</div>
+                </EmptyDataTemplate>
                 <ItemTemplate>
                     <!-- 文章列表 -->
                     <div class="card">
@@ -20,7 +22,7 @@
                             <div class="media-left">
                                 <a href="Detail.aspx?id=<%# Eval("id") %>">
                                     <div class="">
-                                        <img class="card_title_img"  style="border:none" src="<%# Eval("title_img") %>"/>
+                                        <img class="card_title_img" style="border: none" src="<%# Eval("title_img") %>" />
                                     </div>
                                 </a>
                             </div>
@@ -28,9 +30,9 @@
                                 <h3 class="media-heading">
                                     <a href="Detail.aspx?id=<%# Eval("id") %>">
                                         <asp:Label ID="titleLabel" runat="server" Text='<%# Eval("title") %>' /></a>
-                                    <div style="float:right;"><small><%# Eval("time_update") %>&nbsp;&nbsp;<%# Eval("author") %></small></div>
+                                    <div style="float: right;"><small><%# Eval("time_update") %>&nbsp;&nbsp;<%# Eval("author") %></small></div>
                                 </h3>
-                                
+
                                 <asp:Label ID="article_introLabel" runat="server" Text='<%# Eval("article_intro") %>' /><a href="Detail.aspx?id=<%# Eval("id") %>">...查看更多</a>
                             </div>
                         </div>
@@ -41,19 +43,19 @@
                         <span runat="server" id="itemPlaceholder" />
                     </div>
                     <!-- 文章列表分页 -->
-                    <center>
+                    <div class="text-center">
 
-            <asp:DataPager ID="DataPager1" runat="server" PageSize="5">
-                <Fields>
-                    <asp:NextPreviousPagerField FirstPageText="&laquo;" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="data_pager" />
-                    <asp:NextPreviousPagerField ButtonCssClass="data_pager" PreviousPageText="&lt;" ShowNextPageButton="False" />
-                    <asp:NumericPagerField CurrentPageLabelCssClass="data_pager" NumericButtonCssClass="data_pager" />
-                    <asp:NextPreviousPagerField ShowPreviousPageButton="False" ButtonCssClass="data_pager" NextPageText="&gt;" />
-                    <asp:NextPreviousPagerField LastPageText="&raquo;" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="data_pager" />
-                </Fields>
-            </asp:DataPager>
+                        <asp:DataPager ID="DataPager1" runat="server" PageSize="5">
+                            <Fields>
+                                <asp:NextPreviousPagerField FirstPageText="&laquo;" ShowFirstPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="data_pager" />
+                                <asp:NextPreviousPagerField ButtonCssClass="data_pager" PreviousPageText="&lt;" ShowNextPageButton="False" />
+                                <asp:NumericPagerField CurrentPageLabelCssClass="data_pager" NumericButtonCssClass="data_pager" />
+                                <asp:NextPreviousPagerField ShowPreviousPageButton="False" ButtonCssClass="data_pager" NextPageText="&gt;" />
+                                <asp:NextPreviousPagerField LastPageText="&raquo;" ShowLastPageButton="True" ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="data_pager" />
+                            </Fields>
+                        </asp:DataPager>
 
-                </center>
+                    </div>
                 </LayoutTemplate>
             </asp:ListView>
 
@@ -71,7 +73,7 @@
                     <h3 class="panel-title">标签</h3>
                 </div>
                 <ul class="nav bs-docs-sidenav">
-                    
+
                     <asp:ListView ID="ListView3" runat="server" DataKeyNames="id" DataSourceID="LinqArticleTags">
                         <ItemTemplate>
                             <li class=""><a href="Detail.aspx?tagid=<%# Eval("id") %>">

@@ -53,7 +53,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">昵称</label>
                                     <div class="col-sm-5">
-                                        <asp:TextBox ID="txt_user_nickname" runat="server" class="form-control" placeholder="昵称" required="yes" autofocus="autofocus"></asp:TextBox>
+                                        <asp:TextBox ID="txt_user_nickname" runat="server" class="form-control" placeholder="昵称" required="yes"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
