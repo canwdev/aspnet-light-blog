@@ -52,25 +52,51 @@ public partial class dc_admin_admin_settings : System.Web.UI.Page
     protected void btn_UpHomeBg_Click(object sender, EventArgs e)
     {
         Js.SetCssClass(this, "settings_home", "tab-pane fade active in");
-        string fname = FileUpload1.FileName;        // 获取文件名
-        string fext = fname.Substring(fname.LastIndexOf("."));      // 获取文件格式
-        if (FileUpload1.HasFile && fext == ".jpg")
+
+        if (FileUpload1.HasFile)
         {
-            dcSettings.UploadFileToPath(FileUpload1, "../res/", "homepage_background");
+            string fname = FileUpload1.FileName;        // 获取文件名
+            string fext = fname.Substring(fname.LastIndexOf("."));      // 获取文件格式
+            if (fext == ".jpg" || fext == ".png")
+            {
+                dcSettings.UploadFileToPath(FileUpload1, "../res/", "homepage_background");
+            }
+            else
+            {
+                Js.Alert("仅允许上传jpg、png格式作为首页封面");
+            }
         }
         else
         {
-            Js.Alert("仅允许上传jpg格式作为首页封面");
+            Js.Alert("未选择图片");
         }
     }
 
+
     protected void btn_SaveWebSet_Click(object sender, EventArgs e)
     {
-        Js.SetCssClass(this, "settings_home", "tab-pane fade active in");
-        dcSettings.SaveValue("site_title", txt_site_title.Text);
-        dcSettings.SaveValue("hero_title", txt_hreo_title.Text);
-        dcSettings.SaveValue("hero_context", txt_hreo_context.Text);
-        dcSettings.SaveValue("hero_link_id", txt_hero_link_id.Text);
+        if (Page.IsValid)
+        {
+            Js.SetCssClass(this, "settings_home", "tab-pane fade active in");
+            dcSettings.SaveValue("site_title", txt_site_title.Text);
+            dcSettings.SaveValue("hero_title", txt_hreo_title.Text);
+            dcSettings.SaveValue("hero_context", txt_hreo_context.Text);
+            dcSettings.SaveValue("hero_link_id", txt_hero_link_id.Text);
+            if (FileUpload1.HasFile)
+            {
+                string fname = FileUpload1.FileName;        // 获取文件名
+                string fext = fname.Substring(fname.LastIndexOf("."));      // 获取文件格式
+                if (fext == ".jpg")
+                {
+                    dcSettings.UploadFileToPath(FileUpload1, "../res/", "homepage_background");
+                }
+                else
+                {
+                    Js.Alert("仅允许上传jpg格式作为首页封面");
+                }
+            }
+        }
+       
     }
 
     protected void chk_SetRegEna_Changed(object sender, EventArgs e)

@@ -25,7 +25,7 @@
 
             <div class="input-group">
                 <div class="btn-group">
-                    <asp:Button ID="btn_set_title_img" runat="server" Text="选择图片" CssClass="btn btn-default"  
+                    <asp:Button ID="btn_set_title_img" runat="server" Text="选择标题图片" CssClass="btn btn-default"  
                     OnClientClick="ContentPlaceHolder1_FileUpload1.click(); return false;" />
                 <asp:Button ID="btn_set_title_img_real" runat="server" Text="设置" CssClass="btn btn-default" OnClick="btn_SetTitleImg_Click"/>
                 </div>
@@ -56,8 +56,8 @@
 
         <div style="text-align: right;">
             <div style="float: left;">
-                <asp:Label ID="lbl_modpwd_ok" runat="server" ForeColor="Green" Visible="False"></asp:Label>
-                <asp:Label ID="lbl_modpwd_error" runat="server" ForeColor="Red" Visible="False"></asp:Label>
+                <asp:Label ID="lbl_ok" runat="server" ForeColor="Green" Visible="False"></asp:Label>
+                <asp:Label ID="lbl_error" runat="server" ForeColor="Red" Visible="False"></asp:Label>
             </div>
 
             <div class="btn-group">

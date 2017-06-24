@@ -48,8 +48,10 @@
                             <asp:TextBox ID="txt_uname" runat="server" class="form-control" placeholder="Your Name" ReadOnly="True"></asp:TextBox>
                         </div>
                     </div>
-                    <asp:TextBox ID="txt_comment_text" runat="server" TextMode="MultiLine" Rows="4" placeholder="写下你的评论..." class="form-control span6" Style="margin-bottom: 10px;"></asp:TextBox>
+                    <asp:TextBox ID="txt_comment_text" runat="server" TextMode="MultiLine" Rows="4" placeholder="写下你的评论..." 
+                         required="yes" class="form-control span6" Style="margin-bottom: 10px;" ></asp:TextBox>
                     <div style="text-align: right;">
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="请输入评论" ControlToValidate="txt_comment_text" Display="Dynamic" ForeColor="#FF0066"></asp:RequiredFieldValidator>
                         <asp:Button ID="btn_submit_comment" runat="server" Text="评论" class="btn btn-primary" OnClick="btn_submit_comment_Click" />
                     </div>
                 </asp:Panel>

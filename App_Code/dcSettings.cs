@@ -251,11 +251,6 @@ public class dcSettings
                 {
 
                 }
-               
-
-
-                
-
                 result.title_img = imgUrl;
                 db.SubmitChanges();
             }

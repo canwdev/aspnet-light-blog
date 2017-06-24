@@ -29,6 +29,9 @@ public partial class dc_admin_admin_modify_info : System.Web.UI.Page
                 Panel_mod_pswd.Visible = false;
                 Panel_mod_pswd_disabled.Visible = true;
                 Js.SetCssClass(this, "admin_info_mod", "tab-pane fade active in");
+                ScriptManager.RegisterStartupScript(this, GetType(), "aa",
+                "document.getElementById('userinfo_frame').src=\"user_info.aspx?id="+ Request.QueryString["id"] + "\"", true);
+
 
                 UinfoLoad(id);
             }
@@ -42,26 +45,6 @@ public partial class dc_admin_admin_modify_info : System.Web.UI.Page
         }
 
         id = int.Parse(Session["new_uid"].ToString());
-    }
-
-    protected string Porductid_tmp
-    {
-        get
-        {
-            if (ViewState["uid"] == null)
-            {
-                return string.Empty;
-            }
-            else
-            {
-                return (string)ViewState["uid"];
-            }
-        }
-
-        set
-        {
-            ViewState["uid"] = value;
-        }
     }
 
     /// 加载用户信息
@@ -79,9 +62,10 @@ public partial class dc_admin_admin_modify_info : System.Web.UI.Page
 
         if (dcSettings.IsAdmin())
         {
-            txt_user_gid.ReadOnly = false;
             txt_user_uname.ReadOnly = false;
+            txt_user_gid.ReadOnly = false;
         }
+
     }
 
     /// 加载用户头像
@@ -114,19 +98,35 @@ public partial class dc_admin_admin_modify_info : System.Web.UI.Page
     protected void btn_UpUinfo_Click(object sender, EventArgs e)
     {
         Js.SetCssClass(this, "admin_info_mod", "tab-pane fade active in");
-
-        var result = (from r in db.dc_user
-                      where r.uid == id
-                      select r).First();
-
-        result.nickname = txt_user_nickname.Text;
-        result.intro = txt_user_intro.Text;
-        if (dcSettings.IsAdmin())
+        if (Page.IsValid)
         {
-            result.uname = txt_user_uname.Text;
-            result.gid = int.Parse(txt_user_gid.Text);
+            try
+            {
+                var result = (from r in db.dc_user
+                              where r.uid == id
+                              select r).First();
+
+                result.nickname = txt_user_nickname.Text;
+                result.intro = txt_user_intro.Text;
+                if (dcSettings.IsAdmin())
+                {
+                    result.uname = txt_user_uname.Text;
+                    result.gid = int.Parse(txt_user_gid.Text);
+                }
+                db.SubmitChanges();
+                if (FileUpload1.HasFile)
+                {
+                    dcSettings.UploadHeadImg(FileUpload1, id, img_headimg1);
+                }
+                lbl_ok.Text = "修改成功";
+                lbl_ok.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                lbl_error.Text = ex.Message;
+                lbl_error.Visible = true;
+            }
         }
-        db.SubmitChanges();
     }
 
     /// 修改密码按钮

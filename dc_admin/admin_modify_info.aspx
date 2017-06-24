@@ -16,7 +16,7 @@
         <div class="col-sm-9 col-md-10 main tab-content">
             <!-- 概览 -->
             <div role="tabpanel" class="tab-pane fade" id="admin_info_show" aria-labelledby="admin_info_show-tab">
-                <iframe src="user_info.aspx" frameborder="0" width="100%" height="500"></iframe>
+                <iframe id="userinfo_frame" src="user_info.aspx" frameborder="0" width="100%" height="500"></iframe>
             </div>
             <!-- 修改信息 -->
             <div role="tabpanel" class="tab-pane fade" id="admin_info_mod" aria-labelledby="admin_info_mod-tab">
@@ -53,7 +53,7 @@
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">昵称</label>
                                     <div class="col-sm-5">
-                                        <asp:TextBox ID="txt_user_nickname" runat="server" class="form-control" placeholder="昵称" required="yes"></asp:TextBox>
+                                        <asp:TextBox ID="txt_user_nickname" runat="server" class="form-control" placeholder="昵称"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -66,20 +66,32 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">ID</label>
                                 <div class="col-sm-2">
-                                    <asp:TextBox ID="txt_user_uid" runat="server" class="form-control" placeholder="UID" ReadOnly="True"></asp:TextBox>
+                                    <asp:TextBox ID="txt_user_uid" type="number" runat="server" class="form-control" placeholder="UID" required="yes" ReadOnly="True"></asp:TextBox>
                                 </div>
-                                <div class="col-sm-1" style="padding-top:10px;">
+                                <div class="col-sm-1" style="padding-top: 10px;">
                                     <span class="label label-default">标识，不可修改。</span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">组ID</label>
                                 <div class="col-sm-2">
-                                    <asp:TextBox ID="txt_user_gid" runat="server" class="form-control" placeholder="GID" ReadOnly="True"></asp:TextBox>
+                                    <asp:TextBox ID="txt_user_gid" type="number" runat="server" class="form-control" placeholder="GID" required="yes" ReadOnly="True"></asp:TextBox>
                                 </div>
-                                <div class="col-sm-1" style="padding-top:10px;">
+                                <div class="col-sm-5" style="padding-top: 10px; color: #FF0066">
                                     <span class="label label-default">0为管理员，1为用户。</span>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
+                                        ErrorMessage="只能为整数" Display="Dynamic" ControlToValidate="txt_user_gid" ValidationExpression="[0-9]"></asp:RegularExpressionValidator>
+                                    <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="值只能在0~1之间"
+                                        ControlToValidate="txt_user_gid" Type="Integer" MinimumValue="0" MaximumValue="1" Display="Dynamic"></asp:RangeValidator>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="此为必填项"
+                                        ControlToValidate="txt_user_gid"></asp:RequiredFieldValidator>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">
+                                    <asp:Label ID="lbl_ok" runat="server" ForeColor="Green" Visible="False"></asp:Label>
+                                    <asp:Label ID="lbl_error" runat="server" ForeColor="Red" Visible="False"></asp:Label>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -87,7 +99,9 @@
             </div>
             <!-- 修改密码 -->
             <div role="tabpanel" class="tab-pane fade" id="admin_pwd_mod" aria-labelledby="admin_pwd_mod-tab">
-                <asp:Panel ID="Panel_mod_pswd_disabled" runat="server" Visible="False" CssClass="text-center"><h3>无权修改该用户的密码。</h3></asp:Panel>
+                <asp:Panel ID="Panel_mod_pswd_disabled" runat="server" Visible="False" CssClass="text-center">
+                    <h3>无权修改该用户的密码。</h3>
+                </asp:Panel>
                 <asp:Panel ID="Panel_mod_pswd" runat="server" DefaultButton="btn_modpwd">
                     <div class="col-md-5 bs-example bs-example-form">
                         <legend>修改密码</legend>
@@ -109,6 +123,9 @@
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
                                     ErrorMessage="密码不能为空" ControlToValidate="txt_new_password"
                                     Display="Dynamic" ForeColor="#FF0066" ValidationGroup="vaild_mod_pswd"></asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                    ErrorMessage="密码长度在5~20字符" ForeColor="#FF0066" ValidationGroup="vaild_mod_pswd" Display="Dynamic"
+                                    ControlToValidate="txt_new_password" ValidationExpression="\S{5,20}"></asp:RegularExpressionValidator>
                             </div>
                         </div>
                         <div class="form-group">
@@ -135,6 +152,7 @@
                     </div>
                 </asp:Panel>
             </div>
+
             <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
             <script>function goAdmin_pwd_mod() {

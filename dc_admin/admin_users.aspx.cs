@@ -29,7 +29,6 @@ public partial class dc_admin_admin_users : System.Web.UI.Page
 
     protected void chk_SetRegEna_Changed(object sender, EventArgs e)
     {
-        Js.SetCssClass(this, "settings_1", "tab-pane fade active in");
         if (chk_set_regist_enabled.Checked == true)
         {
             dcSettings.SaveValue("set_regist_enabled", "yes");

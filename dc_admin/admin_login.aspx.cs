@@ -12,7 +12,6 @@ public partial class admin_login : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        lbl_err.Text = "";
         //若已登录，直接跳转
         try
         {
@@ -31,6 +30,16 @@ public partial class admin_login : System.Web.UI.Page
             lbl_err.Text = exc.Message.ToString();
         }
 
+        
+        if (!this.IsPostBack)
+        {
+            lbl_err.Text = "";
+            lbl_ok.Text = "";
+            Js.SetCssClass(this, "a", "id_tab_login", "tab-pane fade active in");
+            Js.SetCssClass(this, "b", "login_tab_login_active", "active");
+        }
+        
+
         // 判断是否允许注册
         if (dcSettings.LoadValue("set_regist_enabled") != "yes")
         {
@@ -38,15 +47,28 @@ public partial class admin_login : System.Web.UI.Page
             panel_register_disabled.Visible = true;
         }
     }
+
+    protected void Page_Error(object sender, EventArgs e)
+    {
+        Exception ex = Server.GetLastError();
+        if (ex is HttpRequestValidationException)
+        {
+            Response.Write("从客户端中检测到有潜在危险的 Request.Form 值请您输入合法字符串。");
+            Server.ClearError(); // 如果不ClearError()这个异常会继续传到Application_Error()。
+        }
+    }
+
     protected void btn_login_Click(object sender, EventArgs e)
     {
+        Js.SetCssClass(this, "a", "id_tab_login", "tab-pane fade active in");
+        Js.SetCssClass(this, "b", "login_tab_login_active", "active");
+
         string username = txt_username.Text;
         string password = txt_password.Text;
         string encPassword = RSA.Encrypt(password);
 
         if (Page.IsValid)
         {
-
             try
             {
                 var result = (from r in db.dc_user
@@ -76,16 +98,15 @@ public partial class admin_login : System.Web.UI.Page
             {
                 lbl_err.Text = "登陆失败：" + exc.Message.ToString();
             }
-            finally
-            {
-
-            }
         }
 
     }
 
     protected void btn_regist_Click(object sender, EventArgs e)
     {
+        Js.SetCssClass(this, "a", "id_tab_register", "tab-pane fade active in");
+        Js.SetCssClass(this, "b", "login_tab_register_active", "active");
+
         string username = txt_reg_username.Text;
         string password = txt_reg_password_confirm.Text;
         string encPassword = RSA.Encrypt(password);

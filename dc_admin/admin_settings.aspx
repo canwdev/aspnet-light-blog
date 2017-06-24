@@ -65,7 +65,11 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">链接的文章ID</label>
                                 <div class="col-sm-2">
-                                    <asp:TextBox ID="txt_hero_link_id" runat="server" class="form-control" placeholder="ID"></asp:TextBox>
+                                    <asp:TextBox ID="txt_hero_link_id" runat="server" type="number" class="form-control" placeholder="ID"></asp:TextBox>
+                                </div>
+                                <div class="col-sm-3" style="padding-top:10px; color: #FF0066">
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="只能为正整数" Display="Dynamic" ControlToValidate="txt_hero_link_id" ValidationExpression="[0-9]"></asp:RegularExpressionValidator>
+                                    <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="不能小于1" ControlToValidate="txt_hero_link_id" Type="Integer" MinimumValue="1" MaximumValue="9999" Display="Dynamic"></asp:RangeValidator>
                                 </div>
                             </div>
                         </div>

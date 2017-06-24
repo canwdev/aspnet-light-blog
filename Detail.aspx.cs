@@ -84,6 +84,16 @@ public partial class Detail : System.Web.UI.Page
         }
     }
 
+    protected void Page_Error(object sender, EventArgs e)
+    {
+        Exception ex = Server.GetLastError();
+        if (ex is HttpRequestValidationException)
+        {
+            Response.Write("从客户端中检测到有潜在危险的 Request.Form 值请您输入合法字符串。");
+            Server.ClearError(); // 如果不ClearError()这个异常会继续传到Application_Error()。
+        }
+    }
+
     protected void LoadCommentArea()
     {
         txt_uname.Text = dcSettings.LoadUserName();
@@ -178,17 +188,19 @@ public partial class Detail : System.Web.UI.Page
 
     protected void btn_submit_comment_Click(object sender, EventArgs e)
     {
-        dc_article_comment comment = new dc_article_comment();
-        comment.article_id = int.Parse(Request.QueryString["id"]);
-        comment.author_id = dcSettings.LoadUserUid();
-        comment.comment_text = txt_comment_text.Text;
-        comment.authorized = "yes";     // 是否审核通过（yes）
-        comment.time_commit = DateTime.Now;
+        if (Page.IsValid)
+        {
+            dc_article_comment comment = new dc_article_comment();
+            comment.article_id = int.Parse(Request.QueryString["id"]);
+            comment.author_id = dcSettings.LoadUserUid();
+            comment.comment_text = txt_comment_text.Text;
+            comment.authorized = "yes";     // 是否审核通过（yes）
+            comment.time_commit = DateTime.Now;
 
-        db.dc_article_comment.InsertOnSubmit(comment);
-        db.SubmitChanges();
+            db.dc_article_comment.InsertOnSubmit(comment);
+            db.SubmitChanges();
 
-        Response.Redirect("Detail.aspx?id="+ Request.QueryString["id"] + "#id_comment_area");
-
+            Response.Redirect("Detail.aspx?id=" + Request.QueryString["id"] + "#id_comment_area");
+        }
     }
 }

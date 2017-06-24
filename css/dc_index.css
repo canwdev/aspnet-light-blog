@@ -4,8 +4,9 @@ a:hover {
 
 .jumbotron {
     background-image: url(../res/homepage_background.jpg);
+    background-image: url(../res/homepage_background.png);
     background-repeat: no-repeat;
-    background-position: top center;
+    background-position: center;
     background-size: cover;
     color: white;
     text-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
