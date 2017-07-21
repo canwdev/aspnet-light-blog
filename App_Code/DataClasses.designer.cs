@@ -32,21 +32,21 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
   partial void Insertbc_group(bc_group instance);
   partial void Updatebc_group(bc_group instance);
   partial void Deletebc_group(bc_group instance);
-  partial void Insertdc_article_tag(dc_article_tag instance);
-  partial void Updatedc_article_tag(dc_article_tag instance);
-  partial void Deletedc_article_tag(dc_article_tag instance);
   partial void Insertdc_user(dc_user instance);
   partial void Updatedc_user(dc_user instance);
   partial void Deletedc_user(dc_user instance);
   partial void Insertdc_article(dc_article instance);
   partial void Updatedc_article(dc_article instance);
   partial void Deletedc_article(dc_article instance);
-  partial void Insertdc_settings(dc_settings instance);
-  partial void Updatedc_settings(dc_settings instance);
-  partial void Deletedc_settings(dc_settings instance);
   partial void Insertdc_article_comment(dc_article_comment instance);
   partial void Updatedc_article_comment(dc_article_comment instance);
   partial void Deletedc_article_comment(dc_article_comment instance);
+  partial void Insertdc_article_tag(dc_article_tag instance);
+  partial void Updatedc_article_tag(dc_article_tag instance);
+  partial void Deletedc_article_tag(dc_article_tag instance);
+  partial void Insertdc_settings(dc_settings instance);
+  partial void Updatedc_settings(dc_settings instance);
+  partial void Deletedc_settings(dc_settings instance);
   #endregion
 	
 	public DataClassesDataContext() : 
@@ -87,14 +87,6 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<dc_article_tag> dc_article_tag
-	{
-		get
-		{
-			return this.GetTable<dc_article_tag>();
-		}
-	}
-	
 	public System.Data.Linq.Table<dc_user> dc_user
 	{
 		get
@@ -111,19 +103,27 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		}
 	}
 	
-	public System.Data.Linq.Table<dc_settings> dc_settings
-	{
-		get
-		{
-			return this.GetTable<dc_settings>();
-		}
-	}
-	
 	public System.Data.Linq.Table<dc_article_comment> dc_article_comment
 	{
 		get
 		{
 			return this.GetTable<dc_article_comment>();
+		}
+	}
+	
+	public System.Data.Linq.Table<dc_article_tag> dc_article_tag
+	{
+		get
+		{
+			return this.GetTable<dc_article_tag>();
+		}
+	}
+	
+	public System.Data.Linq.Table<dc_settings> dc_settings
+	{
+		get
+		{
+			return this.GetTable<dc_settings>();
 		}
 	}
 }
@@ -189,116 +189,6 @@ public partial class bc_group : INotifyPropertyChanging, INotifyPropertyChanged
 				this._groupname = value;
 				this.SendPropertyChanged("groupname");
 				this.OngroupnameChanged();
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-}
-
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.dc_article_tag")]
-public partial class dc_article_tag : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _id;
-	
-	private string _article_tag_name;
-	
-	private string _article_tag_intro;
-	
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Onarticle_tag_nameChanging(string value);
-    partial void Onarticle_tag_nameChanged();
-    partial void Onarticle_tag_introChanging(string value);
-    partial void Onarticle_tag_introChanged();
-    #endregion
-	
-	public dc_article_tag()
-	{
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int id
-	{
-		get
-		{
-			return this._id;
-		}
-		set
-		{
-			if ((this._id != value))
-			{
-				this.OnidChanging(value);
-				this.SendPropertyChanging();
-				this._id = value;
-				this.SendPropertyChanged("id");
-				this.OnidChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_article_tag_name", DbType="NVarChar(50)")]
-	public string article_tag_name
-	{
-		get
-		{
-			return this._article_tag_name;
-		}
-		set
-		{
-			if ((this._article_tag_name != value))
-			{
-				this.Onarticle_tag_nameChanging(value);
-				this.SendPropertyChanging();
-				this._article_tag_name = value;
-				this.SendPropertyChanged("article_tag_name");
-				this.Onarticle_tag_nameChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_article_tag_intro", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-	public string article_tag_intro
-	{
-		get
-		{
-			return this._article_tag_intro;
-		}
-		set
-		{
-			if ((this._article_tag_intro != value))
-			{
-				this.Onarticle_tag_introChanging(value);
-				this.SendPropertyChanging();
-				this._article_tag_intro = value;
-				this.SendPropertyChanged("article_tag_intro");
-				this.Onarticle_tag_introChanged();
 			}
 		}
 	}
@@ -784,116 +674,6 @@ public partial class dc_article : INotifyPropertyChanging, INotifyPropertyChange
 	}
 }
 
-[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.dc_settings")]
-public partial class dc_settings : INotifyPropertyChanging, INotifyPropertyChanged
-{
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-	
-	private int _id;
-	
-	private string _set_title;
-	
-	private string _set_value;
-	
-    #region 可扩展性方法定义
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnidChanging(int value);
-    partial void OnidChanged();
-    partial void Onset_titleChanging(string value);
-    partial void Onset_titleChanged();
-    partial void Onset_valueChanging(string value);
-    partial void Onset_valueChanged();
-    #endregion
-	
-	public dc_settings()
-	{
-		OnCreated();
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-	public int id
-	{
-		get
-		{
-			return this._id;
-		}
-		set
-		{
-			if ((this._id != value))
-			{
-				this.OnidChanging(value);
-				this.SendPropertyChanging();
-				this._id = value;
-				this.SendPropertyChanged("id");
-				this.OnidChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_set_title", DbType="NVarChar(50)")]
-	public string set_title
-	{
-		get
-		{
-			return this._set_title;
-		}
-		set
-		{
-			if ((this._set_title != value))
-			{
-				this.Onset_titleChanging(value);
-				this.SendPropertyChanging();
-				this._set_title = value;
-				this.SendPropertyChanged("set_title");
-				this.Onset_titleChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_set_value", DbType="NVarChar(50)")]
-	public string set_value
-	{
-		get
-		{
-			return this._set_value;
-		}
-		set
-		{
-			if ((this._set_value != value))
-			{
-				this.Onset_valueChanging(value);
-				this.SendPropertyChanging();
-				this._set_value = value;
-				this.SendPropertyChanged("set_value");
-				this.Onset_valueChanged();
-			}
-		}
-	}
-	
-	public event PropertyChangingEventHandler PropertyChanging;
-	
-	public event PropertyChangedEventHandler PropertyChanged;
-	
-	protected virtual void SendPropertyChanging()
-	{
-		if ((this.PropertyChanging != null))
-		{
-			this.PropertyChanging(this, emptyChangingEventArgs);
-		}
-	}
-	
-	protected virtual void SendPropertyChanged(String propertyName)
-	{
-		if ((this.PropertyChanged != null))
-		{
-			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-		}
-	}
-}
-
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.dc_article_comment")]
 public partial class dc_article_comment : INotifyPropertyChanging, INotifyPropertyChanged
 {
@@ -1051,6 +831,226 @@ public partial class dc_article_comment : INotifyPropertyChanging, INotifyProper
 				this._time_commit = value;
 				this.SendPropertyChanged("time_commit");
 				this.Ontime_commitChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.dc_article_tag")]
+public partial class dc_article_tag : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _id;
+	
+	private string _article_tag_name;
+	
+	private string _article_tag_intro;
+	
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onarticle_tag_nameChanging(string value);
+    partial void Onarticle_tag_nameChanged();
+    partial void Onarticle_tag_introChanging(string value);
+    partial void Onarticle_tag_introChanged();
+    #endregion
+	
+	public dc_article_tag()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int id
+	{
+		get
+		{
+			return this._id;
+		}
+		set
+		{
+			if ((this._id != value))
+			{
+				this.OnidChanging(value);
+				this.SendPropertyChanging();
+				this._id = value;
+				this.SendPropertyChanged("id");
+				this.OnidChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_article_tag_name", DbType="NVarChar(50)")]
+	public string article_tag_name
+	{
+		get
+		{
+			return this._article_tag_name;
+		}
+		set
+		{
+			if ((this._article_tag_name != value))
+			{
+				this.Onarticle_tag_nameChanging(value);
+				this.SendPropertyChanging();
+				this._article_tag_name = value;
+				this.SendPropertyChanged("article_tag_name");
+				this.Onarticle_tag_nameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_article_tag_intro", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+	public string article_tag_intro
+	{
+		get
+		{
+			return this._article_tag_intro;
+		}
+		set
+		{
+			if ((this._article_tag_intro != value))
+			{
+				this.Onarticle_tag_introChanging(value);
+				this.SendPropertyChanging();
+				this._article_tag_intro = value;
+				this.SendPropertyChanged("article_tag_intro");
+				this.Onarticle_tag_introChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.dc_settings")]
+public partial class dc_settings : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _id;
+	
+	private string _set_title;
+	
+	private string _set_value;
+	
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void Onset_titleChanging(string value);
+    partial void Onset_titleChanged();
+    partial void Onset_valueChanging(string value);
+    partial void Onset_valueChanged();
+    #endregion
+	
+	public dc_settings()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int id
+	{
+		get
+		{
+			return this._id;
+		}
+		set
+		{
+			if ((this._id != value))
+			{
+				this.OnidChanging(value);
+				this.SendPropertyChanging();
+				this._id = value;
+				this.SendPropertyChanged("id");
+				this.OnidChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_set_title", DbType="NVarChar(50)")]
+	public string set_title
+	{
+		get
+		{
+			return this._set_title;
+		}
+		set
+		{
+			if ((this._set_title != value))
+			{
+				this.Onset_titleChanging(value);
+				this.SendPropertyChanging();
+				this._set_title = value;
+				this.SendPropertyChanged("set_title");
+				this.Onset_titleChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_set_value", DbType="NVarChar(50)")]
+	public string set_value
+	{
+		get
+		{
+			return this._set_value;
+		}
+		set
+		{
+			if ((this._set_value != value))
+			{
+				this.Onset_valueChanging(value);
+				this.SendPropertyChanging();
+				this._set_value = value;
+				this.SendPropertyChanged("set_value");
+				this.Onset_valueChanged();
 			}
 		}
 	}
