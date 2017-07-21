@@ -6,6 +6,12 @@
 VisualStudio 2017 + SQL Server 2008 R2
 ~~~
 
+## 演示效果
+[早期的静态页演示效果](https://canwdev.github.io/DigitalCreekDemo)
+
+截图 2017-7-21
+
+
 ## 更新日志
 ~~~
 2017-6-24
