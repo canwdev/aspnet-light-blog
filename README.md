@@ -18,7 +18,7 @@ IDE: VisualStudio 2017
 * 管理员可发布、编辑、修改文章以及修改全局设置
 * 文章可按标签分类，文章编辑支持富文本、文章题图上传
 * 更多细节请查看[更新日志](README_LOG.md)
-* 预览[静态演示页](https://canwdev.github.io/DigitalCreekDemo)
+* 预览[静态演示页](https://canwdev.github.io/dc_blog_demo)
 
 ---
 
