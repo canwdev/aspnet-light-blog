@@ -1,8 +1,6 @@
-﻿# 轻量级博客 ASP.NET应用 · ASP.NET Light Blog
+﻿# ASP.NET Light Blog
 
-<img src="./demo/dc_logo.png" width="200px"/>
-
-使用 ASP.NET 实现的轻量级博客应用（实验版）
+使用 ASP.NET 实现的轻量级博客应用（TEST）
 
 IDE: VisualStudio 2017
 
